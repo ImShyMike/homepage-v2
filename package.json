@@ -1,0 +1,41 @@
+{
+    "name": "homepage-v2",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "format": "prettier --write .",
+        "check": "astro check",
+        "check:fix": "astro check --fix",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "dependencies": {
+        "@astrojs/check": "^0.9.6",
+        "@astrojs/mdx": "^4.3.13",
+        "@astrojs/sitemap": "^3.6.0",
+        "@astrojs/svelte": "^7.2.3",
+        "@tailwindcss/vite": "^4.1.18",
+        "astro": "^5.16.5",
+        "prettier": "^3.7.4",
+        "prettier-plugin-astro": "^0.14.1",
+        "prettier-plugin-svelte": "^3.4.0",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        "svelte": "^5.45.10",
+        "tailwindcss": "^4.1.18",
+        "typescript": "^5.9.3"
+    },
+    "devDependencies": {
+        "@eslint/compat": "^2.0.0",
+        "@typescript-eslint/parser": "^8.49.0",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-astro": "^1.5.0",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-svelte": "^3.13.1",
+        "typescript-eslint": "^8.49.0"
+    }
+}
