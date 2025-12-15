@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 
 const blog = defineCollection({
     loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
@@ -28,4 +28,14 @@ const projects = defineCollection({
         }),
 });
 
-export const collections = { blog, projects };
+const buttons = defineCollection({
+    loader: file('./src/content/88x31.json'),
+    schema: ({ image }) =>
+        z.object({
+            id: z.string(),
+            link: z.string().url(),
+            image: image(),
+        }),
+});
+
+export const collections = { blog, projects, buttons };

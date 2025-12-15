@@ -4,7 +4,7 @@
 
 @layer base {
     a {
-        @apply underline decoration-1 underline-offset-2 decoration-ctp-lavender transition-colors;
+        @apply decoration-ctp-lavender underline decoration-1 underline-offset-2 transition-colors;
     }
 
     a:hover {
