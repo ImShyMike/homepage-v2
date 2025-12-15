@@ -1,8 +1,7 @@
-// interface ImportMetaEnv {
-//     readonly SITE_TITLE: string;
-//     readonly SITE_DESCRIPTION: string;
-// }
+interface ImportMetaEnv {
+    readonly COMMIT_SHA: string;
+}
 
-// interface ImportMeta {
-//     readonly env: ImportMetaEnv;
-// }
+interface ImportMeta {
+    readonly env: ImportMetaEnv;
+}

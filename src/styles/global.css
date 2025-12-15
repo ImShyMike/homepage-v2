@@ -11,3 +11,30 @@
         @apply decoration-dashed;
     }
 }
+
+@layer utilities {
+    .astro-code span {
+        font-style: normal !important;
+    }
+
+    .pattern {
+        --size: 32px;
+        --line: 2px;
+
+        background:
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent calc(var(--size) - var(--line)),
+                var(--color-ctp-mantle) calc(var(--size) - var(--line)),
+                var(--color-ctp-mantle) var(--size)
+            ),
+            repeating-linear-gradient(
+                to bottom,
+                transparent 0,
+                transparent calc(var(--size) - var(--line)),
+                var(--color-ctp-mantle) calc(var(--size) - var(--line)),
+                var(--color-ctp-mantle) var(--size)
+            );
+    }
+}

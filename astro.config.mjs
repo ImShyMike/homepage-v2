@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
+import Icons from 'unplugin-icons/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +12,12 @@ export default defineConfig({
     trailingSlash: 'ignore',
     output: 'static',
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [
+            tailwindcss(),
+            Icons({
+                compiler: 'astro',
+            }),
+        ],
     },
     prefetch: {
         prefetchAll: true,
@@ -21,13 +27,12 @@ export default defineConfig({
         locales: ['en'],
     },
     integrations: [mdx(), sitemap(), svelte()],
-    // env: {
-    //     schema: {
-    //         API_URL: envField.string({ context: 'client', access: 'public', optional: true }),
-    //         PORT: envField.number({ context: 'server', access: 'public', default: 4321 }),
-    //         API_SECRET: envField.string({ context: 'server', access: 'secret' }),
-    //     },
-    // },
+    env: {
+        schema: {
+            COMMIT_SHA: envField.string({ context: 'client', access: 'public', default: 'dev' }),
+        },
+        validateSecrets: true,
+    },
     markdown: {
         shikiConfig: {
             theme: 'catppuccin-mocha',
