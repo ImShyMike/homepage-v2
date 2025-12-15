@@ -1,8 +1,53 @@
 ---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const projects = (await getCollection('projects')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const recentProjects = projects.slice(0, 3);
+
+const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const recentPosts = posts.slice(0, 3);
 ---
 
-<Layout>
+<Layout title={`Home | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
     <Welcome />
+    <section class="mb-8">
+        <h2 class="mb-4 text-2xl font-bold">Recent projects</h2>
+        {recentProjects.length === 0 && <p class="mb-4">No projects yet.</p>}
+        {recentProjects.map((project) => <ProjectCard project={project} />)}
+        <p class="mb-4">
+            <a href="/project" class="text-inherit">See all projects</a>
+        </p>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="mb-4 text-2xl font-bold">Latest posts</h2>
+        {recentPosts.length === 0 && <p class="mb-4">No posts yet.</p>}
+        {
+            recentPosts.map((post) => (
+                <article class="mb-6">
+                    <p class="text-ctp-subtext0 mb-2">
+                        <FormattedDate date={post.data.pubDate} />
+                    </p>
+                    <h3 class="mb-2 text-xl font-bold">
+                        <a href={`/blog/${post.id}`} class="text-inherit">
+                            {post.data.title}
+                        </a>
+                    </h3>
+                    <p class="mb-2">{post.data.description}</p>
+                </article>
+            ))
+        }
+        <p class="mb-4">
+            <a href="/blog" class="text-inherit">View all posts</a>
+        </p>
+    </section>
 </Layout>

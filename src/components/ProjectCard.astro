@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+    project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props as Props;
+const { data, id } = project;
+const { title, description, date, link, repo } = data;
+const href = `/project/${id}`;
+---
+
+<article class="mb-6">
+    <p class="text-ctp-subtext0 mb-2"><FormattedDate date={date} /></p>
+    <h3 class="mb-2 text-xl font-bold">
+        <a href={href} class="text-inherit">{title}</a>
+    </h3>
+    <p class="mb-2">{description}</p>
+    <p>
+        <a href={href} class="text-inherit">Read more</a>
+        {
+            link && (
+                <span>
+                    {' '}
+                    ·{' '}
+                    <a href={link} class="text-inherit">
+                        Live
+                    </a>
+                </span>
+            )
+        }
+        {
+            repo && (
+                <span>
+                    {' '}
+                    ·{' '}
+                    <a href={repo} class="text-inherit">
+                        Code
+                    </a>
+                </span>
+            )
+        }
+    </p>
+</article>

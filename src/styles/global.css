@@ -1,1 +1,13 @@
+@import '@fontsource-variable/open-sans';
+@import '@catppuccin/tailwindcss/mocha.css';
 @import 'tailwindcss';
+
+@layer base {
+    a {
+        @apply underline decoration-1 underline-offset-2;
+    }
+
+    a:hover {
+        @apply decoration-dashed;
+    }
+}
