@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { Image } from 'astro:assets';
@@ -21,8 +20,18 @@ const buttons = await getCollection('buttons');
 ---
 
 <Layout title={`Home | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
-    <Welcome />
-    <section class="mb-8">
+    <section class="px-5 pt-4 pb-2">
+        <h1 class="mb-4 text-3xl font-bold">Hai, I'm ShyMike :3</h1>
+        <p class="mb-4">This is my silly personal space on the web.</p>
+        <p class="mb-4">
+            <a href="/project" class="text-inherit">Projects</a> · <a
+                href="/blog"
+                class="text-inherit">Blog</a
+            >
+        </p>
+    </section>
+
+    <section class="border-ctp-surface1 border-t px-5 pt-4 pb-2">
         <h2 class="mb-4 text-2xl font-bold">Recent projects</h2>
         {recentProjects.length === 0 && <p class="mb-4">No projects yet.</p>}
         {recentProjects.map((project) => <ProjectCard project={project} />)}
@@ -31,7 +40,7 @@ const buttons = await getCollection('buttons');
         </p>
     </section>
 
-    <section class="mb-8">
+    <section class="border-ctp-surface1 border-t px-5 pt-4 pb-2">
         <h2 class="mb-4 text-2xl font-bold">Latest posts</h2>
         {recentPosts.length === 0 && <p class="mb-4">No posts yet.</p>}
         {
@@ -54,26 +63,42 @@ const buttons = await getCollection('buttons');
         </p>
     </section>
 
-    <section>
+    <section class="border-ctp-surface1 border-t px-5 pt-4 pb-2">
         <h2 class="mb-4 text-2xl font-bold">Buttons</h2>
         {
-            buttons.map((b) => (
-                <a
-                    href={b.data.link}
-                    title={b.data.id}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mr-2 mb-2 inline-block transition-transform hover:scale-110"
-                >
-                    <Image
-                        src={b.data.image}
-                        alt={b.data.id}
-                        width={88}
-                        height={31}
-                        class="image-pixelated"
-                    />
-                </a>
-            ))
+            buttons.map((b) => {
+                const { image } = b.data;
+
+                return (
+                    <a
+                        href={b.data.link}
+                        title={b.data.id}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mr-2 mb-2 inline-block transition-transform hover:scale-110"
+                    >
+                        {typeof image === 'string' ? (
+                            <img
+                                src={image}
+                                alt={b.data.id}
+                                width={88}
+                                height={31}
+                                class="image-pixelated"
+                                loading="eager"
+                            />
+                        ) : (
+                            <Image
+                                src={image}
+                                alt={b.data.id}
+                                width={image.width}
+                                height={image.height}
+                                class="image-pixelated"
+                                loading="eager"
+                            />
+                        )}
+                    </a>
+                );
+            })
         }
     </section>
 </Layout>

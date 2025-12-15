@@ -34,7 +34,7 @@ const buttons = defineCollection({
         z.object({
             id: z.string(),
             link: z.string().url(),
-            image: image(),
+            image: z.union([image(), z.string().url()]),
         }),
 });
 

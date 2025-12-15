@@ -11,21 +11,23 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Layout title={title} description={description} image={heroImage}>
-    <article class="prose prose-lg max-w-none">
-        <p class="text-ctp-subtext0 mb-2"><FormattedDate date={pubDate} /></p>
-        {
-            updatedDate && (
-                <p class="text-ctp-subtext0 mb-2">
-                    Last updated on <FormattedDate date={updatedDate} />
-                </p>
-            )
-        }
-        <h1 class="mb-4 text-3xl font-bold">{title}</h1>
-        <p class="mb-4 text-lg">{description}</p>
-        {heroImage && <Image src={heroImage} format="webp" alt="" class="mb-6 rounded-lg" />}
-        <slot />
-    </article>
-    <section class="mt-8">
-        <Giscus client:load />
-    </section>
+    <div class="px-5 pt-4 pb-2">
+        <article class="prose prose-lg max-w-none">
+            <p class="text-ctp-subtext0 mb-2"><FormattedDate date={pubDate} /></p>
+            {
+                updatedDate && (
+                    <p class="text-ctp-subtext0 mb-2">
+                        Last updated on <FormattedDate date={updatedDate} />
+                    </p>
+                )
+            }
+            <h1 class="mb-4 text-3xl font-bold">{title}</h1>
+            <p class="mb-4 text-lg">{description}</p>
+            {heroImage && <Image src={heroImage} format="webp" alt="" class="mb-6 rounded-lg" />}
+            <slot />
+        </article>
+        <section class="mt-8">
+            <Giscus client:load />
+        </section>
+    </div>
 </Layout>

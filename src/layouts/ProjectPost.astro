@@ -19,52 +19,54 @@ const {
 ---
 
 <Layout title={title} description={description} image={heroImage}>
-    <article class="prose prose-lg max-w-none">
-        <p class="text-ctp-subtext0 mb-2"><FormattedDate date={date} /></p>
-        <h1 class="mb-4 text-3xl font-bold">{title}</h1>
-        <p class="mb-4 text-lg">{description}</p>
-        {
-            tags.length > 0 && (
-                <p class="mb-2">
-                    <span class="font-semibold">Tags:</span> {tags.join(', ')}
-                </p>
-            )
-        }
-        {
-            techStack.length > 0 && (
-                <p class="mb-2">
-                    <span class="font-semibold">Tech:</span> {techStack.join(', ')}
-                </p>
-            )
-        }
-        {
-            link && (
-                <p class="mb-2">
-                    <a href={link} class="text-inherit">
-                        View live
-                    </a>
-                </p>
-            )
-        }
-        {
-            repo && (
-                <p class="mb-2">
-                    <a href={repo} class="text-inherit">
-                        Source code
-                    </a>
-                </p>
-            )
-        }
-        {
-            heroImage && (
-                <Image
-                    src={heroImage}
-                    format="webp"
-                    alt={`Preview image for ${title}`}
-                    class="mb-6 rounded-lg"
-                />
-            )
-        }
-        <slot />
-    </article>
+    <div class="px-5 pt-4 pb-2">
+        <article class="prose prose-lg max-w-none">
+            <p class="text-ctp-subtext0 mb-2"><FormattedDate date={date} /></p>
+            <h1 class="mb-4 text-3xl font-bold">{title}</h1>
+            <p class="mb-4 text-lg">{description}</p>
+            {
+                tags.length > 0 && (
+                    <p class="mb-2">
+                        <span class="font-semibold">Tags:</span> {tags.join(', ')}
+                    </p>
+                )
+            }
+            {
+                techStack.length > 0 && (
+                    <p class="mb-2">
+                        <span class="font-semibold">Tech:</span> {techStack.join(', ')}
+                    </p>
+                )
+            }
+            {
+                link && (
+                    <p class="mb-2">
+                        <a href={link} class="text-inherit">
+                            View live
+                        </a>
+                    </p>
+                )
+            }
+            {
+                repo && (
+                    <p class="mb-2">
+                        <a href={repo} class="text-inherit">
+                            Source code
+                        </a>
+                    </p>
+                )
+            }
+            {
+                heroImage && (
+                    <Image
+                        src={heroImage}
+                        format="webp"
+                        alt={`Preview image for ${title}`}
+                        class="mb-6 rounded-lg"
+                    />
+                )
+            }
+            <slot />
+        </article>
+    </div>
 </Layout>

@@ -12,7 +12,7 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 <a
     href={href}
     class:list={[
-        'inline-block px-2 py-1 no-underline',
+        'border-ctp-surface1 inline-block border-l px-6 py-3 no-underline',
         { 'font-bold underline hover:decoration-solid': isActive },
         className,
     ]}
