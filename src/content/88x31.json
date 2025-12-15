@@ -3,5 +3,45 @@
         "id": "3kh0",
         "link": "https://3kh0.net",
         "image": "../assets/88x31/3kh0.png"
+    },
+    {
+        "id": "ivie",
+        "link": "https://ivie.codes",
+        "image": "../assets/88x31/ivie.png"
+    },
+    {
+        "id": "lynn",
+        "link": "https://lynn.pt",
+        "image": "../assets/88x31/lynn.png"
+    },
+    {
+        "id": "mahad",
+        "link": "https://skyfall.dev",
+        "image": "../assets/88x31/mahad.png"
+    },
+    {
+        "id": "errorcodezero",
+        "link": "https://errorcodezero.dev",
+        "image": "https://errorcodezero.dev/button.png"
+    },
+    {
+        "id": "hack club",
+        "link": "https://hackclub.com",
+        "image": "../assets/88x31/hackclub.gif"
+    },
+    {
+        "id": "junya",
+        "link": "https://cutiesin.tech",
+        "image": "https://cutiesin.tech/88x31/junya.gif"
+    },
+    {
+        "id": "neon",
+        "link": "https://saahild.com",
+        "image": "https://raw.githubusercontent.com/NeonGamerBot-QK/NeonGamerBot-QK/refs/heads/main/webring.gif"
+    },
+    {
+        "id": "nightfall",
+        "link": "https://rana.transfemme.dev",
+        "image": "https://rana.transfemme.dev/static/88x31.png"
     }
 ]
