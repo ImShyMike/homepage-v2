@@ -29,7 +29,7 @@ export default defineConfig({
     integrations: [mdx(), sitemap(), svelte()],
     env: {
         schema: {
-            COMMIT_SHA: envField.string({ context: 'client', access: 'public', default: 'dev' }),
+            CF_PAGES_COMMIT_SHA: envField.string({ context: 'client', access: 'public', default: 'dev' }),
         },
         validateSecrets: true,
     },

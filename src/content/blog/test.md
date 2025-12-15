@@ -2,7 +2,8 @@
 title: First post
 description: Lorem ipsum dolor sit amet
 pubDate: Jul 08 2022
-heroImage: ../../assets/blog/cat.webp
+updatedDate: Jul 10 2022
+heroImage: ../../assets/blog/crazy.jpg
 ---
 
 abc this is a test

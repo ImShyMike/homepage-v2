@@ -5,7 +5,7 @@ import GitCommitVertical from '~icons/lucide/git-commit-vertical';
 import { GITHUB } from '../consts';
 
 const userUrl = `https://github.com/${GITHUB.name}`;
-const COMMIT_SHA = import.meta.env.COMMIT_SHA;
+const COMMIT_SHA = import.meta.env.CF_PAGES_COMMIT_SHA;
 const shortHash = COMMIT_SHA === undefined ? 'dev' : COMMIT_SHA.slice(0, 7);
 const gitCommitUrl = COMMIT_SHA ? `${userUrl}/${GITHUB.repo}/commit/${COMMIT_SHA}` : '';
 ---
@@ -17,12 +17,14 @@ const gitCommitUrl = COMMIT_SHA ? `${userUrl}/${GITHUB.repo}/commit/${COMMIT_SHA
                 href={gitCommitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="low-line text-ctp-text flex items-center text-sm transition-colors sm:text-base"
+                class="text-ctp-text flex items-center text-sm transition-colors sm:text-base"
             >
                 <GitCommitVertical class="h-4 w-4 sm:h-5 sm:w-5" /><span class="mr-0.5"
                     >{shortHash}</span
                 >
             </a>
+
+            <a href="/buttons" class="text-sm">buttons</a>
 
             <div class="flex flex-row gap-2 text-center">
                 <a

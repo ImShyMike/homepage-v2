@@ -10,9 +10,9 @@ const projects = (await getCollection('projects')).sort(
 ---
 
 <Layout title={`Projects | ${SITE_TITLE}`} description="Projects and experiments.">
-    <div class="px-5 pt-4 pb-2">
+    <div class="px-5 pt-4 pb-5">
         <h1 class="mb-4 text-3xl font-bold">Projects</h1>
-        <p class="mb-4">All documented projects appear below.</p>
+        <p class="mb-4">The gallery of unfinished projects</p>
         {projects.length === 0 && <p class="mb-4">No projects yet.</p>}
         {projects.map((project) => <ProjectCard project={project} />)}
     </div>

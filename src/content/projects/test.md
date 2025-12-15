@@ -6,7 +6,7 @@ link: https://example.com/test-project
 repo: https://github.com/ImShyMike/test-project
 techStack: ['Astro', 'TypeScript', 'Tailwind CSS']
 tags: ['test', 'example']
-heroImage: ../../assets/blog/cat.webp
+heroImage: ../../assets/projects/elephant in the room.jpg
 ---
 
 this is a test project

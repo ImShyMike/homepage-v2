@@ -22,6 +22,9 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
         <PageShell>
             <slot />
         </PageShell>
-    </body>
-    <script is:inline data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    </body><script
+        is:inline
+        data-collect-dnt="true"
+        async
+        src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </html>

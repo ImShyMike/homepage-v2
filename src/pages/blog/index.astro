@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
 import { SITE_TITLE } from '../../consts';
+import PostCard from '../../components/PostCard.astro';
 
 const posts = (await getCollection('blog')).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -10,24 +10,10 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Layout title={`Blog | ${SITE_TITLE}`} description="All blog posts.">
-    <div class="px-5 pt-4 pb-2">
+    <div class="px-5 pt-4 pb-5">
         <h1 class="mb-4 text-3xl font-bold">Blog</h1>
-        <p class="mb-4">All published posts are listed below.</p>
+        <p class="mb-4">Ramblings about random stuff</p>
         {posts.length === 0 && <p class="mb-4">No posts yet.</p>}
-        {
-            posts.map((post) => (
-                <article class="mb-6">
-                    <p class="text-ctp-subtext0 mb-2">
-                        <FormattedDate date={post.data.pubDate} />
-                    </p>
-                    <h3 class="mb-2 text-xl font-bold">
-                        <a href={`/blog/${post.id}`} class="text-inherit">
-                            {post.data.title}
-                        </a>
-                    </h3>
-                    <p class="mb-2">{post.data.description}</p>
-                </article>
-            ))
-        }
+        {posts.map((post) => <PostCard blog={post} />)}
     </div>
 </Layout>

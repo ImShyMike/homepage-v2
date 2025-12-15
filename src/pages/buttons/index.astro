@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { Image } from 'astro:assets';
+
+const buttons = await getCollection('buttons');
+---
+
+<Layout title={`Buttons | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+    <section class="px-5 pt-4 pb-2">
+        <h2 class="mb-4 text-2xl font-bold">88x31</h2>
+        {
+            buttons.map((b) => {
+                const { image } = b.data;
+
+                return (
+                    <a
+                        href={b.data.link}
+                        title={b.data.id}
+                        target="_blank"
+                        rel="noopener"
+                        class="mr-2 mb-2 inline-block transition-transform hover:scale-110"
+                    >
+                        {typeof image === 'string' ? (
+                            <img
+                                src={image}
+                                alt={b.data.id}
+                                width={88}
+                                height={31}
+                                class="image-pixelated"
+                                loading="eager"
+                            />
+                        ) : (
+                            <Image
+                                src={image}
+                                alt={b.data.id}
+                                width={image.width}
+                                height={image.height}
+                                class="image-pixelated"
+                                loading="eager"
+                            />
+                        )}
+                    </a>
+                );
+            })
+        }
+    </section>
+</Layout>
+
+<style>
+    .image-pixelated {
+        image-rendering: pixelated;
+        -moz-image-rendering: crisp-edges;
+        -webkit-image-rendering: crisp-edges;
+    }
+</style>

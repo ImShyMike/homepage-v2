@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
+import { Image } from 'astro:assets';
+import Github from '~icons/lucide/github';
+import ExternalLink from '~icons/lucide/external-link';
 
 interface Props {
     project: CollectionEntry<'projects'>;
@@ -8,39 +11,38 @@ interface Props {
 
 const { project } = Astro.props as Props;
 const { data, id } = project;
-const { title, description, date, link, repo } = data;
+const { title, description, date, link, repo, heroImage } = data;
 const href = `/project/${id}`;
 ---
 
-<article class="mb-6">
-    <p class="text-ctp-subtext0 mb-2"><FormattedDate date={date} /></p>
-    <h3 class="mb-2 text-xl font-bold">
-        <a href={href} class="text-inherit">{title}</a>
-    </h3>
-    <p class="mb-2">{description}</p>
-    <p>
-        <a href={href} class="text-inherit">Read more</a>
-        {
-            link && (
-                <span>
-                    {' '}
-                    ·{' '}
-                    <a href={link} class="text-inherit">
-                        Live
-                    </a>
-                </span>
-            )
-        }
-        {
-            repo && (
-                <span>
-                    {' '}
-                    ·{' '}
-                    <a href={repo} class="text-inherit">
-                        Code
-                    </a>
-                </span>
-            )
-        }
-    </p>
+<article
+    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex w-full border transition-colors h-40"
+>
+    <div class="px-4 py-2 h-full flex flex-col gap-2 max-w-[60%]">
+        <h3 class="text-xl font-bold">
+            <a href={href} class="text-inherit">{title}</a>
+        </h3>
+        <p class="mb-auto leading-relaxed">{description}</p>
+        <div class="flex gap-2">
+            {link && (
+                <a href={link} class="text-inherit flex items-center gap-1">
+                    <ExternalLink class="h-4 w-4" /> Live
+                </a>
+            )}
+            {repo && (
+                <a href={repo} class="text-inherit flex items-center gap-1">
+                    <Github class="h-4 w-4" /> Code
+                </a>
+            )}
+        </div>
+        <p class="text-ctp-subtext0 mt-auto"><FormattedDate date={date} /></p>
+    </div>
+    {heroImage && (
+        <Image
+            src={heroImage}
+            alt=""
+            class="ml-auto max-w-[40%]"
+            loading="eager"
+        />
+    )}
 </article>
