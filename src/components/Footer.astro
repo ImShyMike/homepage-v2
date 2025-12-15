@@ -1,37 +1,48 @@
 ---
 import Github from '~icons/lucide/github';
+import Rss from '~icons/lucide/rss';
 import GitCommitVertical from '~icons/lucide/git-commit-vertical';
-import { GithubData } from '../consts';
+import { GITHUB } from '../consts';
 
-const userUrl = `https://github.com/${GithubData.name}`;
+const userUrl = `https://github.com/${GITHUB.name}`;
 const COMMIT_SHA = import.meta.env.COMMIT_SHA;
 const shortHash = COMMIT_SHA === undefined ? 'dev' : COMMIT_SHA.slice(0, 7);
-const gitCommitUrl = COMMIT_SHA ? `${userUrl}/${GithubData.repo}/commit/${COMMIT_SHA}` : '';
+const gitCommitUrl = COMMIT_SHA ? `${userUrl}/${GITHUB.repo}/commit/${COMMIT_SHA}` : '';
 ---
 
 <footer class="flex justify-center">
     <div class="bg-ctp-crust border-ctp-surface1 mx-4 mb-3 border p-2 shadow-lg">
-        <div class="flex flex-row items-center justify-between gap-2 sm:gap-3">
+        <div class="flex flex-row items-center justify-between gap-2 sm:gap-2.5">
             <a
                 href={gitCommitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="low-line text-ctp-text hover:text-ctp-accent flex items-center text-sm transition-colors sm:text-base"
+                class="low-line text-ctp-text flex items-center text-sm transition-colors sm:text-base"
             >
-                <GitCommitVertical class="h-4 w-4 sm:h-5 sm:w-5" /><span>{shortHash}</span>
+                <GitCommitVertical class="h-4 w-4 sm:h-5 sm:w-5" /><span class="mr-0.5">{shortHash}</span>
             </a>
 
             <span class="bold text-ctp-surface1">|</span>
 
-            <div class="flex flex-row gap-1.5 text-center">
+            <div class="flex flex-row gap-2 text-center">
                 <a
                     href={userUrl}
                     aria-label="GitHub"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-ctp-text hover:text-ctp-accent flex items-center transition-colors"
+                    class="text-ctp-text flex items-center transition-colors"
                 >
                     <Github class="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
+                </a>
+
+                <a
+                    href="/rss.xml"
+                    aria-label="RSS Feed"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-ctp-text flex items-center transition-colors"
+                >
+                    <Rss class="h-4.5 w-4.5 sm:h-5.5 sm:w-5.5" />
                 </a>
             </div>
         </div>

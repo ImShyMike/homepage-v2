@@ -4,11 +4,11 @@
 
 @layer base {
     a {
-        @apply underline decoration-1 underline-offset-2;
+        @apply underline decoration-1 underline-offset-2 decoration-ctp-lavender transition-colors;
     }
 
     a:hover {
-        @apply decoration-dashed;
+        @apply bg-ctp-lavender text-ctp-crust! no-underline transition-colors;
     }
 }
 
