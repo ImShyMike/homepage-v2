@@ -11,23 +11,33 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Layout title={title} description={description} image={heroImage}>
-    <div class="px-5 pt-4 pb-2">
-        <article class="prose prose-lg max-w-none">
-            <p class="text-ctp-subtext0 mb-2"><FormattedDate date={pubDate} /></p>
+    <article class="prose prose-lg max-w-none">
+        <div
+            class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4 pb-5"
+        >
+            <h1 class="mt-4 text-3xl font-bold">{title}</h1>
+            <p class="m-0! text-lg">{description}</p>
+            {heroImage && <Image src={heroImage} format="webp" alt={title} class="max-w-140" />}
+            <p class="text-ctp-subtext0 m-0!"><FormattedDate date={pubDate} /></p>
             {
                 updatedDate && (
-                    <p class="text-ctp-subtext0 mb-2">
+                    <p class="text-ctp-subtext0 m-0!">
                         Last updated on <FormattedDate date={updatedDate} />
                     </p>
                 )
             }
-            <h1 class="mb-4 text-3xl font-bold">{title}</h1>
-            <p class="mb-4 text-lg">{description}</p>
-            {heroImage && <Image src={heroImage} format="webp" alt="" class="mb-6 rounded-lg" />}
+        </div>
+        <div class="px-20 pt-4 pb-2">
             <slot />
-        </article>
-        <section class="mt-8">
-            <Giscus client:load />
-        </section>
-    </div>
+        </div>
+    </article>
+    <section class="mt-8 px-5 pt-4 pb-4">
+        <Giscus client:load />
+    </section>
 </Layout>
+
+<style>
+    .gsc-main {
+        gap: 0px !important;
+    }
+</style>

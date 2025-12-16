@@ -16,33 +16,30 @@ const href = `/project/${id}`;
 ---
 
 <article
-    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex w-full border transition-colors h-40"
+    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex h-40 w-full border transition-colors"
 >
-    <div class="px-4 py-2 h-full flex flex-col gap-2 max-w-[60%]">
+    <div class="flex h-full max-w-[60%] flex-col gap-2 px-4 py-2">
         <h3 class="text-xl font-bold">
             <a href={href} class="text-inherit">{title}</a>
         </h3>
         <p class="mb-auto leading-relaxed">{description}</p>
         <div class="flex gap-2">
-            {link && (
-                <a href={link} class="text-inherit flex items-center gap-1">
-                    <ExternalLink class="h-4 w-4" /> Live
-                </a>
-            )}
-            {repo && (
-                <a href={repo} class="text-inherit flex items-center gap-1">
-                    <Github class="h-4 w-4" /> Code
-                </a>
-            )}
+            {
+                link && (
+                    <a href={link} class="flex items-center gap-1 text-inherit">
+                        <ExternalLink class="h-4 w-4" /> Live
+                    </a>
+                )
+            }
+            {
+                repo && (
+                    <a href={repo} class="flex items-center gap-1 text-inherit">
+                        <Github class="h-4 w-4" /> Code
+                    </a>
+                )
+            }
         </div>
         <p class="text-ctp-subtext0 mt-auto"><FormattedDate date={date} /></p>
     </div>
-    {heroImage && (
-        <Image
-            src={heroImage}
-            alt=""
-            class="ml-auto max-w-[40%]"
-            loading="eager"
-        />
-    )}
+    {heroImage && <Image src={heroImage} alt="" class="ml-auto max-w-[40%]" loading="eager" />}
 </article>
