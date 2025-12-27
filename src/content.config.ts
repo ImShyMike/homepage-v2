@@ -31,15 +31,16 @@ const projects = defineCollection({
 const buttons = defineCollection({
     loader: file('./src/content/88x31.json'),
     schema: ({ image }) =>
-        z.object({
-            id: z.string(),
-            link: z.string().url().optional(),
-            rlink: z.string().optional(),
-            image: z.union([image(), z.string().url()]),
-        })
-        .refine(data => data.link || data.rlink, {
-            message: "Either 'link' or 'rlink' must be provided"
-        }),
+        z
+            .object({
+                id: z.string(),
+                link: z.string().url().optional(),
+                rlink: z.string().optional(),
+                image: z.union([image(), z.string().url()]),
+            })
+            .refine((data) => data.link || data.rlink, {
+                message: "Either 'link' or 'rlink' must be provided",
+            }),
 });
 
 export const collections = { blog, projects, buttons };

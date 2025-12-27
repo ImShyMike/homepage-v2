@@ -5,6 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Layout from './Layout.astro';
 import Github from '~icons/lucide/github';
 import ExternalLink from '~icons/lucide/external-link';
+import { getColorForString } from '../utils/colors';
 
 type Props = CollectionEntry<'projects'>['data'];
 
@@ -23,38 +24,74 @@ const {
 <Layout title={title} description={description} image={heroImage}>
     <article class="prose prose-lg max-w-none">
         <div
-            class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4 pb-5"
+            class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4"
         >
-            <h1 class="mt-4 text-3xl font-bold">{title}</h1>
+            <h1 class="mt-4 mb-2! text-3xl font-bold">{title}</h1>
             <p class="m-0! text-lg">{description}</p>
-            {heroImage && <Image src={heroImage} format="webp" alt={title} class="max-w-140" />}
-            <p class="text-ctp-subtext0 m-0!"><FormattedDate date={date} /></p>
-            <div class="mt-2 flex gap-4">
-                {
-                    link && (
-                        <a
-                            href={link}
-                            class="border-ctp-surface1 flex items-center gap-1 border px-2 text-inherit"
-                        >
-                            <ExternalLink class="h-4 w-4" /> Live
-                        </a>
-                    )
-                }
-                {
-                    repo && (
-                        <a
-                            href={repo}
-                            class="border-ctp-surface1 flex items-center gap-1 border px-2 text-inherit"
-                        >
-                            <Github class="h-4 w-4" /> Code
-                        </a>
-                    )
-                }
-            </div>
+            {
+                heroImage && (
+                    <Image
+                        src={heroImage}
+                        format="webp"
+                        alt={title}
+                        class="mt-4! max-w-140"
+                        loading={'eager'}
+                    />
+                )
+            }
         </div>
-        <div class="border-ctp-surface0 flex justify-between border-b px-5 py-1">
-            {tags.length > 0 && <p class="m-0!">#{tags.join(', #')}</p>}
-            {techStack.length > 0 && <p class="m-0!">{techStack.join(', ')}</p>}
+        <div class="border-ctp-surface0 flex flex-row border-b">
+            {
+                repo && (
+                    <a
+                        href={repo}
+                        class="text-ctp-subtext0 border-ctp-surface0 m-0! flex flex-1 items-center justify-center gap-1 border-r px-2 py-2 text-center"
+                    >
+                        <Github class="h-4 w-4" /> Code
+                    </a>
+                )
+            }
+            {
+                link && (
+                    <a
+                        href={link}
+                        class="text-ctp-subtext0 border-ctp-surface0 m-0! flex flex-1 items-center justify-center gap-1 border-r px-2 py-2 text-center"
+                    >
+                        <ExternalLink class="h-4 w-4" /> Live
+                    </a>
+                )
+            }
+            <p class="text-ctp-subtext0 m-0! flex-1 py-2 text-center">
+                <FormattedDate date={date} />
+            </p>
+        </div>
+        <div class="border-ctp-surface0 flex flex-row border-b">
+            {
+                tags.length > 0 && (
+                    <div class="border-ctp-surface0 m-0! flex flex-1 flex-wrap items-center justify-center gap-2 border-r px-2 py-2 text-center">
+                        {tags.map((tag) => (
+                            <span
+                                class={`rounded border px-2 py-0.5 text-sm ${getColorForString(tag)}`}
+                            >
+                                #{tag}
+                            </span>
+                        ))}
+                    </div>
+                )
+            }
+            {
+                techStack.length > 0 && (
+                    <div class="m-0! flex flex-1 flex-wrap items-center justify-center gap-2 px-2 py-2 text-center">
+                        {techStack.map((tech) => (
+                            <span
+                                class={`rounded border px-2 py-0.5 text-sm ${getColorForString(tech)}`}
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                )
+            }
         </div>
         <div class="px-20 pt-4 pb-2">
             <slot />

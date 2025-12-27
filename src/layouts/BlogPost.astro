@@ -14,32 +14,40 @@ const readingTime = Math.ceil(wordCount / 200);
 <Layout title={title} description={description} image={heroImage}>
     <article class="prose prose-lg max-w-none">
         <div
-            class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4 pb-5"
+            class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4"
         >
-            <h1 class="mt-4 text-3xl font-bold">{title}</h1>
+            <h1 class="mt-4 mb-2! text-3xl font-bold">{title}</h1>
             <p class="m-0! text-lg">{description}</p>
-            {heroImage && <Image src={heroImage} format="webp" alt={title} class="max-w-140" />}
-            
-            
+            {
+                heroImage && (
+                    <Image
+                        src={heroImage}
+                        format="webp"
+                        alt={title}
+                        class="mt-4! max-w-140"
+                        loading={'eager'}
+                    />
+                )
+            }
         </div>
-        <div class="flex flex-row border-ctp-surface0 border-b">
-            <div class="flex-1 text-center py-2 border-r border-ctp-surface0">
+        <div class="border-ctp-surface0 flex flex-row border-b">
+            <div class="border-ctp-surface0 flex-1 border-r py-2 text-center">
                 <p class="text-ctp-subtext0 m-0!">
                     published on <FormattedDate date={pubDate} />
                 </p>
             </div>
             {
                 updatedDate && (
-                    <div class="flex-1 text-center py-2 border-r border-ctp-surface0">
+                    <div class="border-ctp-surface0 flex-1 border-r py-2 text-center">
                         <p class="text-ctp-subtext0 m-0!">
                             updated on <FormattedDate date={updatedDate} />
                         </p>
                     </div>
                 )
             }
-            <div class="flex-1 text-center py-2">
-                <p class="text-ctp-subtext0 m-0!">{wordCount} words ({readingTime} mins)</p>
-            </div>
+            <p class="text-ctp-subtext0 m-0! flex-1 py-2 text-center">
+                {wordCount} words ({readingTime} mins)
+            </p>
         </div>
         <div class="px-20 pt-4 pb-2">
             <slot />
@@ -48,7 +56,9 @@ const readingTime = Math.ceil(wordCount / 200);
     <section class="mt-8 px-5 pt-4 pb-4">
         <Giscus client:load />
     </section>
-    <a href={`${Astro.url.pathname}/raw`} class="mb-4 inline-block ml-6 px-1 text-ctp-subtext0 hover:underline"
+    <a
+        href={`${Astro.url.pathname}/raw`}
+        class="text-ctp-subtext0 mb-4 ml-6 inline-block px-1 hover:underline"
         >check out the raw text version of this post
     </a>
 </Layout>
