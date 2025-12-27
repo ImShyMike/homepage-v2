@@ -8,7 +8,7 @@ import Icons from 'unplugin-icons/vite';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://dev.shymike.dev',
+    site: 'https://shymike.dev',
     trailingSlash: 'ignore',
     output: 'static',
     vite: {
