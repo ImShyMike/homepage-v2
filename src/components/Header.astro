@@ -5,7 +5,7 @@ import HeaderLink from './HeaderLink.astro';
 
 <header class="mt-8 bg-transparent">
     <nav
-        class="bg-ctp-crust border-ctp-surface1 mx-auto flex max-w-240 items-center justify-between gap-4 border border-b-0"
+        class="bg-ctp-crust border-ctp-surface1 mx-auto flex max-w-240 items-center justify-between border border-b-0"
     >
         <div class="flex font-bold">
             <a
@@ -14,6 +14,7 @@ import HeaderLink from './HeaderLink.astro';
                 >{SITE_TITLE}</a
             >
         </div>
+        <div class="flex-1 bg-ctp-surface0/15 p-6"></div>
         <div class="flex">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/project">Projects</HeaderLink>

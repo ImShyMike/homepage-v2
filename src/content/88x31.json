@@ -2,7 +2,7 @@
     {
         "id": "3kh0",
         "link": "https://3kh0.net",
-        "image": "../assets/88x31/3kh0.png"
+        "image": "https://files.catbox.moe/ktu37j.png"
     },
     {
         "id": "ivie",
@@ -43,5 +43,50 @@
         "id": "nightfall",
         "link": "https://rana.transfemme.dev",
         "image": "https://rana.transfemme.dev/static/88x31.png"
+    },
+    {
+        "id": "taggie",
+        "link": "https://yip.cat",
+        "image": "https://yip.cat/88x31"
+    },
+    {
+        "id": "jace",
+        "link": "https://jleuthardt.com",
+        "image": "https://files.catbox.moe/grc5yk.png"
+    },
+    {
+        "id": "vivi",
+        "link": "https://vvqb.dev",
+        "image": "https://raw.githubusercontent.com/vivithequeen/vvqb/refs/heads/main/static/88x31/vvqb_dev.gif"
+    },
+    {
+        "id": "bunnyguy",
+        "link": "https://sundial.city",
+        "image": "https://sundial.city/public/img/button.gif"
+    },
+    {
+        "id": "mra",
+        "link": "https://mra.sh",
+        "image": "../assets/88x31/mra.png"
+    },
+    {
+        "id": "astra",
+        "link": "https://astracelestine.nekoweb.org",
+        "image": "https://astracelestine.nekoweb.org/img/siteWidget.png"
+    },
+    {
+        "id": "catppuccin",
+        "link": "https://catppuccin.com/",
+        "image": "../assets/88x31/catppuccin.gif"
+    },
+    {
+        "id": "vscode",
+        "link": "https://code.visualstudio.com",
+        "image": "../assets/88x31/vscode.png"
+    },
+    {
+        "id": "rss",
+        "rlink": "/rss.xml",
+        "image": "../assets/88x31/rss.png"
     }
 ]

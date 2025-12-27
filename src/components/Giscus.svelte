@@ -16,5 +16,5 @@
     inputPosition="top"
     theme="catppuccin_mocha"
     lang="en"
-    loading="lazy"
+    loading="eager"
 />

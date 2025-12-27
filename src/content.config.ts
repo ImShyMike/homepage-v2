@@ -33,8 +33,12 @@ const buttons = defineCollection({
     schema: ({ image }) =>
         z.object({
             id: z.string(),
-            link: z.string().url(),
+            link: z.string().url().optional(),
+            rlink: z.string().optional(),
             image: z.union([image(), z.string().url()]),
+        })
+        .refine(data => data.link || data.rlink, {
+            message: "Either 'link' or 'rlink' must be provided"
         }),
 });
 

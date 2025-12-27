@@ -9,18 +9,18 @@ const buttons = await getCollection('buttons');
 
 <Layout title={`Buttons | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
     <section class="px-5 pt-4 pb-2">
-        <h2 class="mb-4 text-2xl font-bold">88x31</h2>
+        <h2 class="mb-4 text-2xl font-bold">88x31s</h2>
         {
             buttons.map((b) => {
                 const { image } = b.data;
 
                 return (
                     <a
-                        href={b.data.link}
+                        href={b.data.link ?? b.data.rlink}
                         title={b.data.id}
                         target="_blank"
                         rel="noopener"
-                        class="mr-2 mb-2 inline-block transition-transform hover:scale-110"
+                        class="button-link mr-2 mb-2 inline-block transition-transform hover:scale-150"
                     >
                         {typeof image === 'string' ? (
                             <img
@@ -28,7 +28,7 @@ const buttons = await getCollection('buttons');
                                 alt={b.data.id}
                                 width={88}
                                 height={31}
-                                class="image-pixelated"
+                                class="image-pixelated url-image"
                                 loading="eager"
                             />
                         ) : (
@@ -49,9 +49,29 @@ const buttons = await getCollection('buttons');
 </Layout>
 
 <style>
+    .button-link {
+        background-color: transparent !important;
+    }
+
     .image-pixelated {
         image-rendering: pixelated;
         -moz-image-rendering: crisp-edges;
         -webkit-image-rendering: crisp-edges;
+        color: transparent !important;
+    }
+
+    .url-image::before {
+        display: none;
+        content: '';
+    }
+
+    .url-image:empty {
+        content: '';
+        width: 88px;
+        height: 31px;
+        background-image: url("button-not-found.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 </style>

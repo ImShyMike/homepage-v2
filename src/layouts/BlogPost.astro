@@ -5,9 +5,10 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Giscus from '../components/Giscus.svelte';
 import Layout from './Layout.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { wordCount: number };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, wordCount } = Astro.props;
+const readingTime = Math.ceil(wordCount / 200);
 ---
 
 <Layout title={title} description={description} image={heroImage}>
@@ -18,14 +19,27 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             <h1 class="mt-4 text-3xl font-bold">{title}</h1>
             <p class="m-0! text-lg">{description}</p>
             {heroImage && <Image src={heroImage} format="webp" alt={title} class="max-w-140" />}
-            <p class="text-ctp-subtext0 m-0!"><FormattedDate date={pubDate} /></p>
+            
+            
+        </div>
+        <div class="flex flex-row border-ctp-surface0 border-b">
+            <div class="flex-1 text-center py-2 border-r border-ctp-surface0">
+                <p class="text-ctp-subtext0 m-0!">
+                    published on <FormattedDate date={pubDate} />
+                </p>
+            </div>
             {
                 updatedDate && (
-                    <p class="text-ctp-subtext0 m-0!">
-                        Last updated on <FormattedDate date={updatedDate} />
-                    </p>
+                    <div class="flex-1 text-center py-2 border-r border-ctp-surface0">
+                        <p class="text-ctp-subtext0 m-0!">
+                            updated on <FormattedDate date={updatedDate} />
+                        </p>
+                    </div>
                 )
             }
+            <div class="flex-1 text-center py-2">
+                <p class="text-ctp-subtext0 m-0!">{wordCount} words ({readingTime} mins)</p>
+            </div>
         </div>
         <div class="px-20 pt-4 pb-2">
             <slot />
@@ -34,6 +48,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <section class="mt-8 px-5 pt-4 pb-4">
         <Giscus client:load />
     </section>
+    <a href={`${Astro.url.pathname}/raw`} class="mb-4 inline-block ml-6 px-1 text-ctp-subtext0 hover:underline"
+        >check out the raw text version of this post
+    </a>
 </Layout>
 
 <style>
