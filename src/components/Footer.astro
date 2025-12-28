@@ -11,22 +11,26 @@ const gitCommitUrl = COMMIT_SHA ? `${userUrl}/${GITHUB.repo}/commit/${COMMIT_SHA
 ---
 
 <footer class="mb-8 flex w-full justify-center">
-    <div class="bg-ctp-crust border-ctp-surface1 mx-4 w-240 border border-t-0 shadow-lg">
-        <div class="flex flex-row items-center justify-between gap-2 p-2 sm:gap-2.5">
-            <a
-                href={gitCommitUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-ctp-text flex items-center text-sm transition-colors sm:text-base"
-            >
-                <GitCommitVertical class="h-4 w-4 sm:h-5 sm:w-5" /><span class="mr-0.5"
-                    >{shortHash}</span
+    <div class="bg-ctp-crust border-ctp-surface1 w-240 border border-t-0 shadow-lg">
+        <div class="flex w-full items-center p-2 sm:gap-2.5">
+            <div class="flex-1">
+                <a
+                    href={gitCommitUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-ctp-text flex items-center text-sm transition-colors sm:text-base"
                 >
-            </a>
+                    <GitCommitVertical class="h-4 w-4 sm:h-5 sm:w-5" /><span class="mr-0.5"
+                        >{shortHash}</span
+                    >
+                </a>
+            </div>
 
-            <a href="/buttons" class="text-sm">buttons</a>
+            <div class="flex flex-1 justify-center">
+                <a href="/buttons" class="text-sm">buttons</a>
+            </div>
 
-            <div class="flex flex-row gap-2 text-center">
+            <div class="flex flex-1 justify-end gap-2 text-center">
                 <a
                     href={userUrl}
                     aria-label="GitHub"

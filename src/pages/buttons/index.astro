@@ -8,43 +8,45 @@ const buttons = await getCollection('buttons');
 ---
 
 <Layout title={`Buttons | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
-    <section class="px-5 pt-4 pb-2">
+    <section class="flex flex-col items-center justify-center px-5 pt-4 pb-2">
         <h2 class="mb-4 text-2xl font-bold">88x31s</h2>
-        {
-            buttons.map((b) => {
-                const { image } = b.data;
+        <div class="flex flex-row flex-wrap items-center justify-center">
+            {
+                buttons.map((b) => {
+                    const { image } = b.data;
 
-                return (
-                    <a
-                        href={b.data.link ?? b.data.rlink}
-                        title={b.data.id}
-                        target="_blank"
-                        rel="noopener"
-                        class="button-link mr-2 mb-2 inline-block transition-transform hover:scale-150"
-                    >
-                        {typeof image === 'string' ? (
-                            <img
-                                src={image}
-                                alt={b.data.id}
-                                width={88}
-                                height={31}
-                                class="image-pixelated url-image"
-                                loading="eager"
-                            />
-                        ) : (
-                            <Image
-                                src={image}
-                                alt={b.data.id}
-                                width={image.width}
-                                height={image.height}
-                                class="image-pixelated"
-                                loading="eager"
-                            />
-                        )}
-                    </a>
-                );
-            })
-        }
+                    return (
+                        <a
+                            href={b.data.link ?? b.data.rlink}
+                            title={b.data.id}
+                            target="_blank"
+                            rel="noopener"
+                            class="button-link mr-2 mb-2 inline-block transition-transform hover:scale-150"
+                        >
+                            {typeof image === 'string' ? (
+                                <img
+                                    src={image}
+                                    alt={b.data.id}
+                                    width={88}
+                                    height={31}
+                                    class="image-pixelated url-image"
+                                    loading="eager"
+                                />
+                            ) : (
+                                <Image
+                                    src={image}
+                                    alt={b.data.id}
+                                    width={image.width}
+                                    height={image.height}
+                                    class="image-pixelated"
+                                    loading="eager"
+                                />
+                            )}
+                        </a>
+                    );
+                })
+            }
+        </div>
     </section>
 </Layout>
 

@@ -1,24 +1,26 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import SearchMenu from './SearchMenu.svelte';
 ---
 
 <header class="mt-8 bg-transparent">
     <nav
         class="bg-ctp-crust border-ctp-surface1 mx-auto flex max-w-240 items-center justify-between border border-b-0"
     >
-        <div class="flex font-bold">
+        <div class="flex flex-1 grow font-bold sm:grow-0">
             <a
                 href="/"
-                class="border-ctp-surface1 h-full border-r px-6 py-3 text-inherit no-underline"
+                class="border-ctp-surface1 h-full flex-1 grow px-6 py-3 text-inherit no-underline sm:border-r"
                 >{SITE_TITLE}</a
             >
         </div>
-        <div class="bg-ctp-surface0/15 flex-1 p-6"></div>
+        <div class="bg-ctp-surface0/15 hidden flex-1 p-6 sm:block"></div>
         <div class="flex">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/project">Projects</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
+            <SearchMenu client:idle />
         </div>
     </nav>
 </header>

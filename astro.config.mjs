@@ -19,7 +19,7 @@ export default defineConfig({
         plugins: [
             tailwindcss(),
             Icons({
-                compiler: 'astro',
+                compiler: 'svelte',
             }),
         ],
     },

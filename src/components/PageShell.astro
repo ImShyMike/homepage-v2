@@ -4,9 +4,11 @@ import Footer from './Footer.astro';
 ---
 
 <div class="pattern flex min-h-screen flex-col">
-    <Header transition:persist />
-    <main class="bg-ctp-crust border-ctp-surface1 mx-auto w-full max-w-240 border">
-        <slot />
-    </main>
-    <Footer transition:persist />
+    <div class="mx-4">
+        <Header transition:persist />
+        <main class="bg-ctp-crust border-ctp-surface1 mx-auto w-full max-w-240 border">
+            <slot />
+        </main>
+        <Footer transition:persist />
+    </div>
 </div>
