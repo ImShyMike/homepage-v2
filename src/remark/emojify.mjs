@@ -57,3 +57,7 @@ export default function remarkEmojify() {
         });
     };
 }
+
+// need to make changes here?
+// run this after every change: fd '^remark-' node_modules -t d -d 2 -x rm -r && rm -r .astro && bun i && bun dev
+// why? i have no idea... but it works!
