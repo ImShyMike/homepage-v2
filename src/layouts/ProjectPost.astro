@@ -9,16 +9,7 @@ import { getColorForString } from '../utils/colors';
 
 type Props = CollectionEntry<'projects'>['data'];
 
-const {
-    title,
-    description,
-    date,
-    link,
-    repo,
-    techStack = [],
-    tags = [],
-    heroImage,
-} = Astro.props as Props;
+const { title, description, date, link, repo, techStack = [], heroImage } = Astro.props as Props;
 ---
 
 <Layout title={title} description={description} image={heroImage}>
@@ -28,6 +19,19 @@ const {
         >
             <h1 class="mt-4 mb-2! text-3xl font-bold">{title}</h1>
             <p class="m-0! text-lg">{description}</p>
+            {
+                techStack.length > 0 && (
+                    <div class="m-0! flex flex-1 flex-wrap items-center justify-center gap-2 pt-2 text-center">
+                        {techStack.map((tech) => (
+                            <span
+                                class={`rounded border px-2 py-0.5 text-sm ${getColorForString(tech)}`}
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                )
+            }
             {
                 heroImage && (
                     <Image
@@ -64,34 +68,6 @@ const {
             <p class="text-ctp-subtext0 m-0! flex-1 py-2 text-center">
                 <FormattedDate date={date} />
             </p>
-        </div>
-        <div class="border-ctp-surface0 flex flex-row border-b">
-            {
-                tags.length > 0 && (
-                    <div class="border-ctp-surface0 m-0! flex flex-1 flex-wrap items-center justify-center gap-2 border-r px-2 py-2 text-center">
-                        {tags.map((tag) => (
-                            <span
-                                class={`rounded border px-2 py-0.5 text-sm ${getColorForString(tag)}`}
-                            >
-                                #{tag}
-                            </span>
-                        ))}
-                    </div>
-                )
-            }
-            {
-                techStack.length > 0 && (
-                    <div class="m-0! flex flex-1 flex-wrap items-center justify-center gap-2 px-2 py-2 text-center">
-                        {techStack.map((tech) => (
-                            <span
-                                class={`rounded border px-2 py-0.5 text-sm ${getColorForString(tech)}`}
-                            >
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                )
-            }
         </div>
         <div class="px-20 pt-4 pb-2">
             <slot />

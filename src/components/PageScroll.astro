@@ -1,0 +1,18 @@
+<div class="sticky top-0 left-0 z-50 h-1 w-full overflow-hidden">
+    <div class="animate-scroll bg-ctp-lavender h-1 w-0"></div>
+</div>
+
+<script is:inline>
+    const scrollBar = document.querySelector('.animate-scroll');
+
+    const updateScroll = () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight =
+            document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        percent = (scrollTop / scrollHeight) * 100;
+        scrollBar.style.width = percent + '%';
+    };
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    updateScroll();
+</script>

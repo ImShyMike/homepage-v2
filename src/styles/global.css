@@ -12,6 +12,13 @@
         @apply bg-ctp-lavender text-ctp-crust! no-underline transition-colors;
     }
 
+    a.rehype-heading-link,
+    a.rehype-heading-link:hover,
+    a.rehype-heading-link:active,
+    a.rehype-heading-link:focus {
+        @apply text-ctp-text! bg-transparent! no-underline!;
+    }
+
     mark {
         @apply bg-ctp-lavender text-ctp-crust;
     }
@@ -19,7 +26,7 @@
 
 @layer utilities {
     .astro-code span {
-        font-style: normal !important;
+        font-style: monospace !important;
     }
 
     .pattern {
@@ -93,5 +100,54 @@
 
     .prose pre {
         @apply border-ctp-surface1 rounded-none! border;
+    }
+
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4,
+    .prose h5,
+    .prose h6 {
+        scroll-margin-top: 2rem;
+    }
+
+    .prose img.emoji {
+        display: inline-block;
+        height: 1em;
+        width: 1em;
+        margin: 0 0.2em !important;
+        vertical-align: middle;
+        transform: translateY(-0.05em) scale(1.55);
+        transform-origin: center;
+    }
+}
+
+@layer rehype {
+    @media (min-width: 110ch) {
+        .rehype-heading {
+            margin-left: -1ch;
+        }
+
+        .rehype-heading-link::before {
+            content: '#';
+            color: var(--subtext0);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            position: relative;
+            right: 0.6ch;
+        }
+
+        .rehype-heading:hover .rehype-heading-link::before {
+            visibility: visible;
+            opacity: 0.8;
+            color: var(--text) !important;
+        }
+    }
+
+    .rehype-heading-link {
+        color: var(--text) !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
     }
 }

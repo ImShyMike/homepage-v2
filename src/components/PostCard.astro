@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { Image } from 'astro:assets';
+import { getColorForString } from '../utils/colors';
 
 interface Props {
     blog: CollectionEntry<'blog'>;
@@ -9,7 +10,7 @@ interface Props {
 
 const { blog } = Astro.props as Props;
 const { data, id } = blog;
-const { title, description, pubDate, updatedDate, heroImage } = data;
+const { title, description, pubDate, updatedDate, tags = [], heroImage } = data;
 const href = `/blog/${id}`;
 ---
 
@@ -21,11 +22,22 @@ const href = `/blog/${id}`;
             <a href={href} class="text-inherit">{title}</a>
         </h3>
         <p class="mb-auto leading-relaxed">{description}</p>
+        {
+            tags.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                    {tags.map((tag) => (
+                        <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tag)}`}>
+                            #{tag}
+                        </span>
+                    ))}
+                </div>
+            )
+        }
         <p class="text-ctp-subtext0 mt-auto">
             <FormattedDate date={pubDate} />{
                 updatedDate && (
                     <span class="text-sm">
-                        , updated on <FormattedDate date={updatedDate} />
+                        (updated <FormattedDate date={updatedDate} />)
                     </span>
                 )
             }

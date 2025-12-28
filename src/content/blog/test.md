@@ -3,8 +3,11 @@ title: First post
 description: Lorem ipsum dolor sit amet
 pubDate: Jul 08 2022
 updatedDate: Jul 10 2022
+tags: ['test', 'example']
 heroImage: ../../assets/blog/crazy.jpg
 ---
+
+## Contents
 
 ## Subheading (H2)
 

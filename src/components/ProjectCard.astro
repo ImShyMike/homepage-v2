@@ -11,7 +11,7 @@ interface Props {
 
 const { project } = Astro.props as Props;
 const { data, id } = project;
-const { title, description, link, repo, heroImage, tags = [], techStack = [] } = data;
+const { title, description, link, repo, heroImage, techStack = [] } = data;
 const href = `/project/${id}`;
 ---
 
@@ -24,13 +24,8 @@ const href = `/project/${id}`;
         </h3>
         <p class="mb-auto leading-relaxed">{description}</p>
         {
-            (tags.length > 0 || techStack.length > 0) && (
+            techStack.length > 0 && (
                 <div class="flex flex-wrap gap-1.5 text-xs">
-                    {tags.map((tag) => (
-                        <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tag)}`}>
-                            #{tag}
-                        </span>
-                    ))}
                     {techStack.map((tech) => (
                         <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tech)}`}>
                             {tech}
@@ -39,7 +34,7 @@ const href = `/project/${id}`;
                 </div>
             )
         }
-        <div class="flex gap-2">
+        <div class="mt-auto flex gap-2">
             {
                 link && (
                     <a href={link} class="flex items-center gap-1 text-inherit">

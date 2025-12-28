@@ -5,6 +5,10 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import Icons from 'unplugin-icons/vite';
+import remarkEmojify from './src/remark/emojify.mjs';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,6 +42,22 @@ export default defineConfig({
         validateSecrets: true,
     },
     markdown: {
+        remarkPlugins: [remarkEmojify, [remarkToc, { ordered: true, tight: true }]],
+        rehypePlugins: [
+            rehypeSlug,
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: 'wrap',
+                    headingProperties: {
+                        className: ['rehype-heading'],
+                    },
+                    properties: {
+                        className: ['rehype-heading-link'],
+                    },
+                },
+            ],
+        ],
         shikiConfig: {
             theme: 'catppuccin-mocha',
         },
