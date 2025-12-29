@@ -13,8 +13,8 @@ const { title, description, pubDate, updatedDate, tags = [], heroImage, wordCoun
 const readingTime = Math.ceil(wordCount / 200);
 ---
 
-<PageScroll />
 <Layout title={title} description={description} image={heroImage}>
+    <PageScroll />
     <article class="prose prose-lg max-w-none">
         <div
             class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4"

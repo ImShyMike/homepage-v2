@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Open Sans Variable', 'sans-serif'],
+                sans: ['Noto Sans Variable', 'sans-serif'],
+                mono: ['Fira Code Variable', 'monospace'],
             },
         },
     },

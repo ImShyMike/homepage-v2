@@ -1,7 +1,23 @@
-@import '@fontsource-variable/open-sans';
+@import '@fontsource-variable/noto-sans/wdth.css';
+@import '@fontsource-variable/fira-code';
 @import '@catppuccin/tailwindcss/mocha.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@layer font {
+    body {
+        @apply font-sans;
+        font-family: 'Noto Sans Variable', sans-serif;
+        font-variation-settings: 'wdth' 400;
+    }
+
+    code,
+    pre {
+        @apply font-mono;
+        font-family: 'Fira Code Variable', monospace;
+        font-variation-settings: 'wght' 400;
+    }
+}
 
 @layer base {
     a {
@@ -132,6 +148,18 @@
     .prose h5,
     .prose h6 {
         scroll-margin-top: 2rem;
+    }
+
+    .prose code {
+        &::before,
+        &::after {
+            content: '' !important;
+        }
+        font-style: monospace !important;
+    }
+
+    .prose pre code {
+        background-color: transparent !important;
     }
 }
 
