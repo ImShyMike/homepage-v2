@@ -15,6 +15,9 @@ export default defineConfig({
     site: 'https://shymike.dev',
     trailingSlash: 'ignore',
     output: 'static',
+    image: {
+        domains: ['cachet.dunkirk.sh'],
+    },
     vite: {
         plugins: [
             tailwindcss(),

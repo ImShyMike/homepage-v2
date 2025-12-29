@@ -31,7 +31,8 @@
         vertical-align: middle;
         transform: translateY(-0.2em) scale(1.55);
         transform-origin: center;
-        transition: transform 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+        color: transparent !important;
         &:hover {
             transform: translateY(-0.2em) scale(2.1);
         }

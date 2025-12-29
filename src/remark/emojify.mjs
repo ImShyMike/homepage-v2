@@ -24,7 +24,9 @@ export default function remarkEmojify() {
                     });
                 }
 
-                // emoji image
+                console.log(`[emojify] found :${isLarge ? '!' : ''}${emojiName}:`);
+
+                // create image node with Image component properties
                 parts.push({
                     type: 'image',
                     url: `https://cachet.dunkirk.sh/emojis/${emojiName}/r`,
@@ -33,8 +35,13 @@ export default function remarkEmojify() {
                     data: {
                         hName: 'Image',
                         hProperties: {
-                            className: isLarge ? ['emoji', 'large'] : ['emoji'],
+                            src: `https://cachet.dunkirk.sh/emojis/${emojiName}/r`,
+                            alt: emojiName,
+                            title: emojiName,
+                            width: isLarge ? 64 : 32,
+                            height: isLarge ? 64 : 32,
                             loading: 'eager',
+                            class: isLarge ? 'emoji large' : 'emoji',
                         },
                     },
                 });
