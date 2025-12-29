@@ -15,13 +15,13 @@ const href = `/blog/${id}`;
 ---
 
 <article
-    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex h-40 w-full border transition-colors"
+    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex h-50 w-full border transition-colors"
 >
-    <div class="flex h-full max-w-[60%] flex-col gap-2 px-4 py-2">
+    <div class="flex h-full max-w-[60%] flex-col gap-2 px-5 py-3">
         <h3 class="text-xl font-bold">
             <a href={href} class="text-inherit">{title}</a>
         </h3>
-        <p class="mb-auto leading-relaxed">{description}</p>
+        <p class="leading-relaxed">{description}</p>
         {
             tags.length > 0 && (
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -43,5 +43,14 @@ const href = `/blog/${id}`;
             }
         </p>
     </div>
-    {heroImage && <Image src={heroImage} alt="" class="ml-auto max-w-[40%]" loading="eager" />}
+    {
+        heroImage && (
+            <Image
+                src={heroImage}
+                alt=""
+                class="ml-auto h-full w-[40%] object-cover object-right"
+                loading="eager"
+            />
+        )
+    }
 </article>

@@ -21,6 +21,10 @@ heroImage: ../../assets/blog/crazy.jpg
 
 ## Text Formatting
 
+Slack emojis? Here ya go :yayy:
+
+But what about big ones? I got those too :!thumbup:
+
 This is a regular paragraph with **bold text** and _italic text_. You can also use **strong text** and _emphasized text_.
 
 Here's some `inline code` that should have a green color and background.

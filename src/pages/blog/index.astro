@@ -13,7 +13,9 @@ const posts = (await getCollection('blog')).sort(
     <div class="px-5 pt-4 pb-5">
         <h1 class="mb-4 text-3xl font-bold">Blog</h1>
         <p class="mb-4">Ramblings about random stuff</p>
-        {posts.length === 0 && <p class="mb-4">No posts yet.</p>}
-        {posts.map((post) => <PostCard blog={post} />)}
+        <div class="flex flex-col gap-4">
+            {posts.length === 0 && <p class="mb-4">No posts yet.</p>}
+            {posts.map((post) => <PostCard blog={post} />)}
+        </div>
     </div>
 </Layout>

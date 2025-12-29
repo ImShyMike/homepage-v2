@@ -9,4 +9,15 @@ interface Props {
 const { name, large } = Astro.props as Props;
 ---
 
-<Image class:list={["emoji", {"large": large}]} src={`https://cachet.dunkirk.sh/emojis/${name}/r`} title={name} alt={name} loading="eager" width={32} height={32} />
+<Image
+    class:list={[
+        'emoji bg-ctp-text/50 before:animate-pulse text-transparent transition-all',
+        { large: large },
+    ]}
+    src={`https://cachet.dunkirk.sh/emojis/${name}/r`}
+    title={name}
+    alt={name}
+    loading="eager"
+    width={32}
+    height={32}
+/>
