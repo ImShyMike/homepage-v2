@@ -38,8 +38,11 @@ const { title, description, date, link, repo, techStack = [], heroImage } = Astr
                         src={heroImage}
                         format="webp"
                         alt={title}
+                        width={600}
+                        height={200}
+                        quality="high"
+                        priority
                         class="mt-4! max-w-140"
-                        loading={'eager'}
                     />
                 )
             }

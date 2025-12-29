@@ -47,7 +47,11 @@ const href = `/blog/${id}`;
         heroImage && (
             <Image
                 src={heroImage}
-                alt=""
+                format="webp"
+                alt="post image"
+                widths={[150, 300, 600]}
+                height={200}
+                quality="mid"
                 class="ml-auto h-full w-[40%] object-cover object-right"
                 loading="eager"
             />

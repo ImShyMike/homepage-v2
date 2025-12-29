@@ -14,7 +14,8 @@ const { name, large } = Astro.props as Props;
     src={`https://cachet.dunkirk.sh/emojis/${name}/r`}
     title={name}
     alt={name}
-    loading="eager"
+    priority
+    quality="high"
     width={large ? 64 : 32}
     height={large ? 64 : 32}
 />
