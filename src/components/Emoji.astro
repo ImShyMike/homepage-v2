@@ -4,20 +4,23 @@ import Image from 'astro/components/Image.astro';
 interface Props {
     name: string;
     large?: boolean;
+    priority?: boolean;
 }
 
-const { name, large } = Astro.props as Props;
+const { name, large, priority } = Astro.props as Props;
 ---
 
 <Image
     class:list={[
-        'emoji bg-ctp-text/50 before:animate-pulse text-transparent transition-all',
+        'emoji bg-ctp-text/50 text-transparent transition-all before:animate-pulse',
         { large: large },
     ]}
     src={`https://cachet.dunkirk.sh/emojis/${name}/r`}
     title={name}
     alt={name}
     loading="eager"
+    fetchpriority={priority ? 'high' : 'low'}
+    decoding={priority ? 'sync' : 'async'}
     width={32}
     height={32}
 />
