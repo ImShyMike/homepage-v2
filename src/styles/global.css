@@ -22,6 +22,28 @@
     mark {
         @apply bg-ctp-lavender text-ctp-crust;
     }
+
+    img.emoji {
+        display: inline-block;
+        height: 1em;
+        width: 1em;
+        margin: 0 0.25em !important;
+        vertical-align: middle;
+        transform: translateY(-0.2em) scale(1.55);
+        transform-origin: center;
+        transition: transform 0.1s ease-in-out;
+        &:hover {
+            transform: translateY(-0.2em) scale(2.1);
+        }
+    }
+
+    img.large {
+        transform: translateY(-0.25em) scale(2);
+        margin: 0 0.5em !important;
+        &:hover {
+            transform: translateY(-0.25em) scale(2.5);
+        }
+    }
 }
 
 @layer utilities {
@@ -109,16 +131,6 @@
     .prose h5,
     .prose h6 {
         scroll-margin-top: 2rem;
-    }
-
-    .prose img.emoji {
-        display: inline-block;
-        height: 1em;
-        width: 1em;
-        margin: 0 0.2em !important;
-        vertical-align: middle;
-        transform: translateY(-0.05em) scale(1.55);
-        transform-origin: center;
     }
 }
 

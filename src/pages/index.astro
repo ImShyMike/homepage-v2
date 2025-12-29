@@ -4,6 +4,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import PostCard from '../components/PostCard.astro';
+import Emoji from '../components/Emoji.astro';
 
 const projects = (await getCollection('projects')).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -19,7 +20,7 @@ const recentPosts = posts.slice(0, 3);
 <Layout title={`Home | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
     <section class="px-5 pt-4 pb-2">
         <h1 class="mb-4 text-3xl font-bold">Hai, I'm ShyMike :3</h1>
-        <p class="mb-4">This is my silly personal space on the web.</p>
+        <p class="mb-4">This is my silly personal space on the web. <Emoji name="hyper-dino-wave" large/></p>
     </section>
 
     <section class="border-ctp-surface1 border-t px-5 pt-4 pb-5">

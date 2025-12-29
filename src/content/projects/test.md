@@ -10,4 +10,4 @@ heroImage: ../../assets/projects/elephant in the room.jpg
 
 ## woah this project is very cool
 
-this is a test project :yayy: it's very cool it's :sillybleh: very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool
+this is a test project :yayy: it's very cool it's :!sillybleh: very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool it's very cool

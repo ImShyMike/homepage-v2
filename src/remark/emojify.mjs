@@ -1,6 +1,6 @@
 import { visit } from 'unist-util-visit';
 
-const regex = /:([a-zA-Z0-9_-]+):/g;
+const regex = /:(!)?([a-zA-Z0-9_-]+):/g;
 
 export default function remarkEmojify() {
     return (tree) => {
@@ -12,7 +12,7 @@ export default function remarkEmojify() {
             let match;
 
             while ((match = regex.exec(node.value)) !== null) {
-                const [full, emojiName] = match;
+                const [full, isLarge, emojiName] = match;
                 const start = match.index;
                 const end = start + full.length;
 
@@ -33,8 +33,8 @@ export default function remarkEmojify() {
                     data: {
                         hName: 'Image',
                         hProperties: {
-                            className: ['emoji'],
-                            loading: 'lazy',
+                            className: isLarge ? ['emoji', 'large'] : ['emoji'],
+                            loading: 'eager',
                         },
                     },
                 });
