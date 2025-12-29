@@ -25,6 +25,11 @@
         "image": "https://errorcodezero.dev/button.png"
     },
     {
+        "id": "bomberfish",
+        "link": "https://bomberfish.ca",
+        "image": "https://bomberfish.ca/button.gif"
+    },
+    {
         "id": "hack club",
         "link": "https://hackclub.com",
         "image": "../assets/88x31/hackclub.gif"
@@ -73,6 +78,16 @@
         "id": "astra",
         "link": "https://astracelestine.nekoweb.org",
         "image": "https://astracelestine.nekoweb.org/img/siteWidget.png"
+    },
+    {
+        "id": "nova",
+        "link": "http://novatea.dev",
+        "image": "https://raw.githubusercontent.com/aelithron/novatea/refs/heads/main/public/88x31.gif"
+    },
+    {
+        "id": "foxmoss",
+        "link": "https://foxmoss.com",
+        "image": "https://foxmoss.com/foxmossbutton.png"
     },
     {
         "id": "catppuccin",
