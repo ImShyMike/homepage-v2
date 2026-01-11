@@ -6,7 +6,8 @@ tags: ['workshop', 'astro', 'markdown', 'blog']
 heroImage: ../../assets/blog/making-a-blog/workshop-banner.png
 ---
 
-This workshop was made for [Haxmas](https://haxmas.hackclub.com) day 11 and will _hopefully_ tech you how to make a simple blog using [Astro](https://astro.build) in about 2 to 3 hours :3
+This workshop was made for [Haxmas](https://haxmas.hackclub.com) day 11 and will _hopefully_ tech you
+how to make a simple blog using [Astro](https://astro.build) in about 2 to 3 hours :3
 
 The example project for this workshop can be found here: [https://haxmas-day-11.shymike.dev](https://haxmas-day-11.shymike.dev)
 
@@ -21,7 +22,8 @@ Before starting this workshop, make sure you have the following installed on you
 - [Bun](https://bun.sh) ([npm](https://www.npmjs.com/package/npm) also works but I will be using Bun)
 - A [GitHub](https://github.com) account
 - An IDE (I will be using [VSCode](https://code.visualstudio.com))
-- A [Cloudflare](https://cloudflare.com) account (or any other hosting provider that supports Astro, the guide will use Cloudflare)
+- A [Cloudflare](https://cloudflare.com) account (or any other hosting provider that supports Astro,
+the guide will use Cloudflare)
 
 ## 1) Create a new Astro project
 
@@ -57,7 +59,8 @@ You should now be able to head over to `http://localhost:4321` and see your new 
 
 ## 2) Installing dependencies
 
-No extra dependencies are required but if you are familiar with [tailwindcss](https://tailwindcss.com), you can install it by running:
+No extra dependencies are required but if you are familiar with
+[tailwindcss](https://tailwindcss.com), you can install it by running:
 
 ```bash
 bun astro add tailwind
@@ -87,13 +90,16 @@ src
 └── content.config.ts
 ```
 
-If you want a starting point for styling, you can copy the CSS files in [this folder](https://github.com/ImShyMike/haxmas-day-11/tree/main/haxmas-day-11/src/styles). **(I'll be using this styling throughout the workshop)**
+If you want a starting point for styling, you can copy the CSS files in
+[this folder](https://github.com/ImShyMike/haxmas-day-11/tree/main/haxmas-day-11/src/styles).
+**(I'll be using this styling throughout the workshop)**
 
 Don't worry about the contents of each file yet, that will be done later :P
 
 ## 4) Configuring content
 
-Astro will need to read and parse our markdown files, for that we will need to configure stuff in `content.config.ts` so the posts in `src/content/posts` can be read properly.
+Astro will need to read and parse our markdown files, for that we will need to configure stuff
+in `content.config.ts` so the posts in `src/content/posts` can be read properly.
 
 ```ts
 import { defineCollection, z } from 'astro:content';
@@ -182,7 +188,8 @@ To display a blog post, we will first need to create a layout and a page to rend
 
 That's exactly what `BlogPost.astro` and `posts/[...slug].astro` are for!
 
-The layout file will be used to structure the blog post page, while the slug file will be used to match the url to the correct blog post.
+The layout file will be used to structure the blog post page,
+while the slug file will be used to match the url to the correct blog post.
 
 - `src/layouts/BlogPost.astro`:
 
@@ -280,7 +287,8 @@ const { date } = Astro.props;
 
 ## 8) It exists?
 
-You can now head over to `http://localhost:4321/posts/hello-world` (or whatever you named your markdown file) to see your blog post live!
+You can now head over to `http://localhost:4321/posts/hello-world`
+(or whatever you named your markdown file) to see your blog post live!
 
 _(if you see an error about missing content or incorrect types, stop the dev server and start it again with `bun dev`)_
 
@@ -342,8 +350,6 @@ You can now head over to `http://localhost:4321/posts` to see all your blog post
 
 ## 10) Styling
 
-### I'll also ask that you make your own blog post, it doesn't need to be anything complex or huge, you can make a tiny and silly post :P
-
 Need help with Astro? Check out the [Astro documentation](https://docs.astro.build)!
 
 Want to implement more features into your blog? Check out [Astro's official blog guide](https://docs.astro.build/en/tutorial/0-introduction)!
@@ -363,9 +369,9 @@ To deploy your very amazing blog to Cloudflare Pages:
 - Find your project's repository, select it and hit `Begin setup`.
 
 - Edit the following settings:
-    - **Project name**: Your project name
-    - **Framework preset**: `Astro`
-    - **Build command**: `bun run build`
+  - **Project name**: Your project name
+  - **Framework preset**: `Astro`
+  - **Build command**: `bun run build`
 
 ![cloudflare pages deployment](../../assets/blog/making-a-blog/create-deployment.png)
 
