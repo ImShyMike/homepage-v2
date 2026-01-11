@@ -1,16 +1,16 @@
 const colorClasses = [
-    'text-ctp-flamingo bg-ctp-flamingo/10 border-ctp-flamingo/30',
-    'text-ctp-pink bg-ctp-pink/10 border-ctp-pink/30',
-    'text-ctp-mauve bg-ctp-mauve/10 border-ctp-mauve/30',
-    'text-ctp-red bg-ctp-red/10 border-ctp-red/30',
-    'text-ctp-maroon bg-ctp-maroon/10 border-ctp-maroon/30',
-    'text-ctp-peach bg-ctp-peach/10 border-ctp-peach/30',
-    'text-ctp-yellow bg-ctp-yellow/10 border-ctp-yellow/30',
-    'text-ctp-green bg-ctp-green/10 border-ctp-green/30',
-    'text-ctp-teal bg-ctp-teal/10 border-ctp-teal/30',
-    'text-ctp-sky bg-ctp-sky/10 border-ctp-sky/30',
-    'text-ctp-sapphire bg-ctp-sapphire/10 border-ctp-sapphire/30',
-    'text-ctp-blue bg-ctp-blue/10 border-ctp-blue/30',
+    'text-ctp-flamingo bg-ctp-flamingo/5 border-ctp-flamingo/30',
+    'text-ctp-pink bg-ctp-pink/5 border-ctp-pink/30',
+    'text-ctp-mauve bg-ctp-mauve/5 border-ctp-mauve/30',
+    'text-ctp-red bg-ctp-red/5 border-ctp-red/30',
+    'text-ctp-maroon bg-ctp-maroon/5 border-ctp-maroon/30',
+    'text-ctp-peach bg-ctp-peach/5 border-ctp-peach/30',
+    'text-ctp-yellow bg-ctp-yellow/5 border-ctp-yellow/30',
+    'text-ctp-green bg-ctp-green/5 border-ctp-green/30',
+    'text-ctp-teal bg-ctp-teal/5 border-ctp-teal/30',
+    'text-ctp-sky bg-ctp-sky/5 border-ctp-sky/30',
+    'text-ctp-sapphire bg-ctp-sapphire/5 border-ctp-sapphire/30',
+    'text-ctp-blue bg-ctp-blue/5 border-ctp-blue/30',
 ];
 
 const magicNumber = 37518; // yes, this is just a random number
