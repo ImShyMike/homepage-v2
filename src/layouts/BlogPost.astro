@@ -40,11 +40,12 @@ const readingTime = Math.ceil(wordCount / 200);
                         src={heroImage}
                         format="webp"
                         alt={title}
-                        width={600}
-                        height={200}
+                        widths={[150, 300, 600, heroImage.width]}
+                        height={300}
                         quality="high"
                         priority
-                        class="mt-4! max-w-140"
+                        class="mt-4!"
+                        layout='full-width'
                     />
                 )
             }
