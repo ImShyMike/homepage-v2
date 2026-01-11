@@ -30,7 +30,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
                 window.__themeListenersAdded = true;
             }
         </script>
-        <script is:inline data-astro-rerun>
+        <script is:inline>
             const handleAnalyticsLinks = () => {
                 const name = 'outbound-link-click';
                 document.querySelectorAll('a').forEach((a) => {
