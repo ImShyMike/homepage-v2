@@ -3,8 +3,8 @@
 
     let theme = $derived.by(() => {
         return document?.documentElement?.dataset?.theme === 'light'
-            ? 'catppuccin-latte'
-            : 'catppuccin-mocha';
+            ? 'catppuccin_latte'
+            : 'catppuccin_mocha';
     });
 </script>
 
