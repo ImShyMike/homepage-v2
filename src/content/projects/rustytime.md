@@ -9,32 +9,11 @@ heroImage: ../../assets/projects/rustytime.png
 ---
 
 <div class="flex flex-col items-center justify-center">
-<a class="mt-8!" href="https://rustytime.shymike.dev">
-    <img class="m-0!" alt="rustytime" width="200" src="https://raw.githubusercontent.com/ImShyMike/rustytime/main/frontend/static/pwa/favicon-196.png">
-</a>
-<a class="text-lg! mt-4!" href="https://rustytime.shymike.dev"><h1 class="m-0!">rustytime</h1></a>
-<p class="m-0 mb-2">🕒 blazingly fast time tracking for developers</p>
-
-<div class="flex flex-row gap-2 items-center">
-    <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io Total Downloads" src="https://img.shields.io/crates/d/rustytime-server?style=flat-square&color=blue"/>
+    <a class="mt-8!" href="https://rustytime.shymike.dev">
+        <img class="m-0!" alt="rustytime" width="200" src="https://raw.githubusercontent.com/ImShyMike/rustytime/main/frontend/static/pwa/favicon-196.png">
     </a>
-    <a href="https://github.com/ImShyMike/rustytime/actions/workflows/ci.yml">
-        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/ImShyMike/rustytime/ci.yml?style=flat-square&color=green"/>
-    </a>
-    <a href="https://crates.io/crates/rustytime-server">
-        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ImShyMike/rustytime?style=flat-square&color=yellowgreen"/>
-    </a>
-    <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io Version" src="https://img.shields.io/crates/v/rustytime-server?style=flat-square&color=yellow"/>
-    </a>
-    <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io License" src="https://img.shields.io/crates/l/rustytime-server?style=flat-square&color=orange"/>
-    </a>
-    <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io Size" src="https://img.shields.io/crates/size/rustytime-server?style=flat-square&color=red"/>
-    </a>
-</div>
+    <a class="text-lg! mt-4!" href="https://rustytime.shymike.dev"><h1 class="m-0!">rustytime</h1></a>
+    <p class="m-0 mb-2">🕒 blazingly fast time tracking for developers</p>
 </div>
 
 ---

@@ -152,7 +152,7 @@
     }
 
     .prose pre {
-        @apply border-ctp-surface1 rounded-none! border;
+        @apply border-ctp-surface1 rounded-none! border px-3! py-2! md:px-5! md:py-4!;
     }
 
     .prose h1,
