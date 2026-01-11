@@ -17,7 +17,7 @@ const routes: SearchItem[] = [
         description: 'The homepage of this site',
         url: '/',
         type: 'Page',
-        date: 3
+        date: 3,
     },
     {
         title: 'Projects',
@@ -31,7 +31,7 @@ const routes: SearchItem[] = [
         description: 'Ramblings about random stuff',
         url: '/blog',
         type: 'Page',
-        date: 1
+        date: 1,
     },
 ];
 

@@ -21,6 +21,8 @@ const buttons = await getCollection('buttons');
                             title={b.data.id}
                             target="_blank"
                             rel="noopener"
+                            data-umami-event="button-click"
+                            data-umami-event-url={b.data.link ?? b.data.rlink}
                             class="button-link mr-2 mb-2 inline-block transition-transform hover:scale-150"
                         >
                             {typeof image === 'string' ? (

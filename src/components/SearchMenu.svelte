@@ -32,7 +32,7 @@
         Object.entries(splitItems).sort(([typeA], [typeB]) => {
             const indexA = TYPE_ORDER.indexOf(typeA);
             const indexB = TYPE_ORDER.indexOf(typeB);
-            
+
             if (indexA !== -1 && indexB !== -1) {
                 return indexA - indexB;
             }
@@ -58,7 +58,7 @@
     );
 
     let visuallyOrderedItems: SearchItem[] = $derived(
-        sortedTypeEntries.flatMap(([_type, itemsArray]) =>
+        sortedTypeEntries.flatMap(([, itemsArray]) =>
             itemsArray.filter((item) => filteredItems.includes(item))
         )
     );
@@ -102,7 +102,8 @@
 
         if (event.key === 'ArrowUp' && visuallyOrderedItems.length > 0) {
             event.preventDefault();
-            activeIndex = (activeIndex - 1 + visuallyOrderedItems.length) % visuallyOrderedItems.length;
+            activeIndex =
+                (activeIndex - 1 + visuallyOrderedItems.length) % visuallyOrderedItems.length;
             return;
         }
 

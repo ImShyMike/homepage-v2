@@ -37,7 +37,14 @@ const href = `/projects/${id}`;
         <div class="mt-auto flex gap-2">
             {
                 link && (
-                    <a href={link} class="flex items-center gap-1 text-inherit" target="_blank">
+                    <a
+                        href={link}
+                        class="flex items-center gap-1 text-inherit"
+                        target="_blank"
+                        rel="noopener"
+                        data-umami-event="project-live-click"
+                        data-umami-event-url={link}
+                    >
                         <ExternalLink class="h-6 w-6" /> Live
                     </a>
                 )
@@ -49,6 +56,8 @@ const href = `/projects/${id}`;
                         class="flex items-center gap-1 text-inherit"
                         target="_blank"
                         rel="noopener noreferrer"
+                        data-umami-event="project-repo-click"
+                        data-umami-event-url={repo}
                     >
                         <Github class="h-6 w-6" /> Code
                     </a>

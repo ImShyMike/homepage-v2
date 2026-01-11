@@ -53,6 +53,10 @@ const { title, description, date, link, repo, techStack = [], heroImage } = Astr
                 repo && (
                     <a
                         href={repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-umami-event="project-post-repo-click"
+                        data-umami-event-url={repo}
                         class="text-ctp-subtext0 border-ctp-surface0 m-0! flex flex-1 items-center justify-center gap-1 border-r p-1 text-center"
                     >
                         <Github class="h-4 w-4" /> Code
@@ -63,6 +67,10 @@ const { title, description, date, link, repo, techStack = [], heroImage } = Astr
                 link && (
                     <a
                         href={link}
+                        target="_blank"
+                        rel="noopener"
+                        data-umami-event="project-post-live-click"
+                        data-umami-event-url={link}
                         class="text-ctp-subtext0 border-ctp-surface0 m-0! flex flex-1 items-center justify-center gap-1 border-r p-1 text-center"
                     >
                         <ExternalLink class="h-4 w-4" /> Live
@@ -70,7 +78,7 @@ const { title, description, date, link, repo, techStack = [], heroImage } = Astr
                 )
             }
             <div class="flex flex-1 items-center justify-center text-center">
-                <p class="text-ctp-subtext0 m-0! flex-1 p-1 text-center md:text-lg text-sm">
+                <p class="text-ctp-subtext0 m-0! flex-1 p-1 text-center text-sm md:text-lg">
                     <FormattedDate date={date} />
                 </p>
             </div>

@@ -51,14 +51,16 @@ const readingTime = Math.ceil(wordCount / 200);
             }
         </div>
         <div class="border-ctp-surface0 flex flex-row border-b">
-            <div class="flex flex-1 items-center justify-center text-center border-ctp-surface0 border-r md:text-lg text-sm">
+            <div
+                class="border-ctp-surface0 flex flex-1 items-center justify-center border-r text-center text-sm md:text-lg"
+            >
                 <p class="text-ctp-subtext0 m-0! p-1">
                     published on <FormattedDate date={pubDate} />
                 </p>
             </div>
             {
                 updatedDate && (
-                    <div class="flex flex-1 items-center justify-center text-center border-ctp-surface0 border-r md:text-lg text-sm">
+                    <div class="border-ctp-surface0 flex flex-1 items-center justify-center border-r text-center text-sm md:text-lg">
                         <p class="text-ctp-subtext0 m-0! p-1">
                             updated on <FormattedDate date={updatedDate} />
                         </p>
@@ -66,7 +68,7 @@ const readingTime = Math.ceil(wordCount / 200);
                 )
             }
             <div class="flex flex-1 items-center justify-center text-center">
-                <p class="text-ctp-subtext0 m-0! flex-1 p-1 text-center md:text-lg text-sm">
+                <p class="text-ctp-subtext0 m-0! flex-1 p-1 text-center text-sm md:text-lg">
                     {wordCount} words ({readingTime} mins)
                 </p>
             </div>

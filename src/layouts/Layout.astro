@@ -30,15 +30,27 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
                 window.__themeListenersAdded = true;
             }
         </script>
+        <script is:inline data-astro-rerun>
+            (() => {
+                const name = 'outbound-link-click';
+                document.querySelectorAll('a').forEach((a) => {
+                    if (a.host !== window.location.host && !a.getAttribute('data-umami-event')) {
+                        a.setAttribute('data-umami-event', name);
+                        a.setAttribute('data-umami-event-url', a.href);
+                    }
+                });
+            })();
+        </script>
+        <script
+            is:inline
+            defer
+            src="https://umami.shy.rip/cat.js"
+            data-do-not-track="false"
+            data-website-id="dea5159a-f101-4266-ab03-2cc56ed5cc42"></script>
     </head>
     <body class="text-ctp-text m-0 font-sans leading-normal">
         <PageShell>
             <slot />
         </PageShell>
-        <script
-            is:inline
-            defer
-            src="https://umami.shy.rip/cat.js"
-            data-website-id="dea5159a-f101-4266-ab03-2cc56ed5cc42"></script>
     </body>
 </html>
