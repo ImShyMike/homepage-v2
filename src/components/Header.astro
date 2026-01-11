@@ -4,23 +4,27 @@ import HeaderLink from './HeaderLink.astro';
 import SearchMenu from './SearchMenu.svelte';
 ---
 
-<header class="mt-8 bg-transparent">
+<header class="bg-transparent">
     <nav
-        class="bg-ctp-crust border-ctp-surface1 mx-auto flex max-w-240 items-center justify-between border border-b-0"
+        class="bg-ctp-crust border-ctp-surface1 mx-auto flex max-w-240 flex-wrap items-center justify-between border border-b-0 sm:flex-nowrap"
     >
-        <div class="flex flex-1 grow font-bold sm:grow-0">
+        <div class="flex flex-1 grow-0 font-bold">
             <a
                 href="/"
-                class="border-ctp-surface1 h-full flex-1 grow px-6 py-3 text-inherit no-underline sm:border-r"
+                class="border-ctp-surface1 h-full flex-1 grow border-r px-6 py-3 text-inherit no-underline"
                 >{SITE_TITLE}</a
             >
         </div>
-        <div class="bg-ctp-surface0/15 hidden flex-1 p-6 sm:block"></div>
-        <div class="flex">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/project">Projects</HeaderLink>
-            <HeaderLink href="/blog">Blog</HeaderLink>
-            <SearchMenu client:idle />
+        <div class="bg-ctp-surface0/15 block flex-1 p-6"></div>
+        <div
+            class="border-ctp-surface1 order-last flex w-full gap-0 border-t px-0 py-0 sm:order-0 sm:w-auto sm:flex-row sm:items-center sm:border-t-0"
+        >
+            <HeaderLink class="w-full border-l-0 text-center sm:w-auto sm:border-l" href="/"
+                >Home</HeaderLink
+            >
+            <HeaderLink class="w-full text-center sm:w-auto" href="/project">Projects</HeaderLink>
+            <HeaderLink class="w-full text-center sm:w-auto" href="/blog">Blog</HeaderLink>
         </div>
+        <SearchMenu client:idle />
     </nav>
 </header>

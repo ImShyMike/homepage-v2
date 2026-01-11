@@ -50,16 +50,30 @@
         transition: all 0.1s ease-in-out;
         color: transparent !important;
         &:hover {
-            transform: translateY(-0.2em) scale(2.1);
+            transform: translateY(-0.2em) scale(2.5);
         }
     }
 
     img.large {
-        transform: translateY(-0.25em) scale(2);
+        transform: translateY(-0.05em) scale(1.75);
         margin: 0 0.5em !important;
         &:hover {
-            transform: translateY(-0.25em) scale(2.5);
+            transform: translateY(-0.05em) scale(4);
         }
+    }
+
+    :root[data-theme='dark'] {
+        color-scheme: dark;
+    }
+
+    :root[data-theme='dark'] .astro-code {
+        background-color: var(--shiki-dark-bg, #1e1e2e) !important;
+        color: var(--shiki-dark, #cdd6f4) !important;
+    }
+
+    :root[data-theme='dark'] .astro-code .line,
+    :root[data-theme='dark'] .astro-code span {
+        color: var(--shiki-dark, inherit) !important;
     }
 }
 

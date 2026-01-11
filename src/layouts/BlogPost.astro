@@ -73,7 +73,7 @@ const readingTime = Math.ceil(wordCount / 200);
         </div>
     </article>
     <section class="mt-8 px-5 pt-4 pb-4">
-        <Giscus client:load />
+        <Giscus client:only="svelte" />
     </section>
     <a
         href={`${Astro.url.pathname}/raw`}

@@ -17,14 +17,28 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
 <html lang="en" transition:animate="none" class="bg-ctp-crust">
     <head>
         <BaseHead title={title} description={description} image={image} />
+        <script is:inline>
+            const media = window.matchMedia('(prefers-color-scheme: dark)');
+            const setTheme = () => {
+                document.documentElement.dataset.theme = media.matches ? 'dark' : 'light';
+            };
+            setTheme();
+
+            if (!window.__themeListenersAdded) {
+                media.addEventListener('change', setTheme);
+                document.addEventListener('astro:after-swap', setTheme);
+                window.__themeListenersAdded = true;
+            }
+        </script>
     </head>
     <body class="text-ctp-text m-0 font-sans leading-normal">
         <PageShell>
             <slot />
         </PageShell>
-    </body><script
-        is:inline
-        data-collect-dnt="true"
-        async
-        src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+        <script
+            is:inline
+            defer
+            src="https://umami.shy.rip/cat.js"
+            data-website-id="dea5159a-f101-4266-ab03-2cc56ed5cc42"></script>
+    </body>
 </html>

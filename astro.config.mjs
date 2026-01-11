@@ -62,7 +62,10 @@ export default defineConfig({
             ],
         ],
         shikiConfig: {
-            theme: 'catppuccin-mocha',
+            themes: {
+                light: 'catppuccin-latte',
+                dark: 'catppuccin-mocha',
+            },
         },
     },
 });
