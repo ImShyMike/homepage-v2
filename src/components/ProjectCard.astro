@@ -12,7 +12,7 @@ interface Props {
 const { project } = Astro.props as Props;
 const { data, id } = project;
 const { title, description, link, repo, heroImage, techStack = [] } = data;
-const href = `/project/${id}`;
+const href = `/projects/${id}`;
 ---
 
 <article

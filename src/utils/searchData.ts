@@ -52,7 +52,7 @@ export async function getSearchItems(): Promise<SearchItem[]> {
         ...projects.map(({ id, data }) => ({
             title: data.title,
             description: data.description,
-            url: `/project/${id}`,
+            url: `/projects/${id}`,
             type: 'Projects' as const,
             tags: data.techStack ?? [],
             date: data.date.valueOf(),
