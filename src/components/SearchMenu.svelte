@@ -1,15 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import LucideSearch from '~icons/lucide/search';
+    import type { SearchItem } from '../utils/searchData';
 
-    type SearchItem = {
-        title: string;
-        description: string;
-        url: string;
-        type: 'Post' | 'Project';
-        tags?: string[];
-        date?: number;
-    };
+    const TYPE_ORDER = ['Page', 'Blog', 'Projects'];
 
     let open = $state(false);
     let query = $state('');
@@ -34,6 +28,23 @@
         )
     );
 
+    let sortedTypeEntries = $derived(
+        Object.entries(splitItems).sort(([typeA], [typeB]) => {
+            const indexA = TYPE_ORDER.indexOf(typeA);
+            const indexB = TYPE_ORDER.indexOf(typeB);
+            
+            if (indexA !== -1 && indexB !== -1) {
+                return indexA - indexB;
+            }
+
+            if (indexA !== -1) return -1;
+
+            if (indexB !== -1) return 1;
+
+            return 0;
+        })
+    );
+
     let normalizedQuery: string = $derived(query.trim().toLowerCase());
 
     let filteredItems: SearchItem[] = $derived(
@@ -46,8 +57,14 @@
               })
     );
 
+    let visuallyOrderedItems: SearchItem[] = $derived(
+        sortedTypeEntries.flatMap(([_type, itemsArray]) =>
+            itemsArray.filter((item) => filteredItems.includes(item))
+        )
+    );
+
     $effect(() => {
-        if (activeIndex >= filteredItems.length) {
+        if (activeIndex >= visuallyOrderedItems.length) {
             activeIndex = 0;
         }
     });
@@ -77,20 +94,20 @@
             return;
         }
 
-        if (event.key === 'ArrowDown' && filteredItems.length > 0) {
+        if (event.key === 'ArrowDown' && visuallyOrderedItems.length > 0) {
             event.preventDefault();
-            activeIndex = (activeIndex + 1) % filteredItems.length;
+            activeIndex = (activeIndex + 1) % visuallyOrderedItems.length;
             return;
         }
 
-        if (event.key === 'ArrowUp' && filteredItems.length > 0) {
+        if (event.key === 'ArrowUp' && visuallyOrderedItems.length > 0) {
             event.preventDefault();
-            activeIndex = (activeIndex - 1 + filteredItems.length) % filteredItems.length;
+            activeIndex = (activeIndex - 1 + visuallyOrderedItems.length) % visuallyOrderedItems.length;
             return;
         }
 
-        if (event.key === 'Enter' && filteredItems[activeIndex]) {
-            window.location.href = filteredItems[activeIndex].url;
+        if (event.key === 'Enter' && visuallyOrderedItems[activeIndex]) {
+            window.location.href = visuallyOrderedItems[activeIndex].url;
         }
     }
 
@@ -180,7 +197,7 @@
                             No matches yet. Try another keyword.
                         </p>
                     {:else}
-                        {#each Object.entries(splitItems) as [type, itemsArray] (type)}
+                        {#each sortedTypeEntries as [type, itemsArray] (type)}
                             {@const typeItems = itemsArray.filter((item) =>
                                 filteredItems.includes(item)
                             )}
@@ -191,15 +208,15 @@
                                     <span>{type}</span>
                                 </div>
                                 {#each typeItems as item (item.url)}
-                                    {@const globalIndex = filteredItems.findIndex(
+                                    {@const visualIndex = visuallyOrderedItems.findIndex(
                                         (i) => i.url === item.url
                                     )}
                                     <a
                                         href={item.url}
-                                        class={`hover:bg-ctp-mantle! border-ctp-base border! no-underline! ${globalIndex === activeIndex ? 'bg-ctp-mantle border-ctp-mantle' : ''} border-ctp-surface1/60 hover:border-ctp-lavender/70 hover:bg-ctp-mantle/40 flex flex-col gap-1 border-b px-4 py-3 transition-colors`}
-                                        onmouseenter={() => (activeIndex = globalIndex)}
+                                        class={`hover:bg-ctp-mantle! border-ctp-base border! no-underline! ${visualIndex === activeIndex ? 'bg-ctp-mantle border-ctp-mantle' : ''} border-ctp-surface1/60 hover:border-ctp-lavender/70 hover:bg-ctp-mantle/40 flex flex-col gap-1 border-b px-4 py-3 transition-colors`}
+                                        onmouseenter={() => (activeIndex = visualIndex)}
                                         role="option"
-                                        aria-selected={globalIndex === activeIndex}
+                                        aria-selected={visualIndex === activeIndex}
                                     >
                                         <p
                                             class="text-ctp-text text-lg leading-tight font-semibold"

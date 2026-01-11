@@ -1,21 +1,46 @@
 import { getCollection } from 'astro:content';
 
+type SearchType = 'Post' | 'Projects' | 'Page';
+
 export type SearchItem = {
     title: string;
     description: string;
     url: string;
-    type: 'Post' | 'Project';
+    type: SearchType;
     tags?: string[];
     date?: number;
 };
 
-let cachedSearchItems: SearchItem[] | null = null;
+const routes: SearchItem[] = [
+    {
+        title: 'Home',
+        description: 'The homepage of this site',
+        url: '/',
+        type: 'Page',
+        date: 3
+    },
+    {
+        title: 'Projects',
+        description: 'The gallery of unfinished projects',
+        url: '/projects',
+        type: 'Page',
+        date: 2,
+    },
+    {
+        title: 'Blog',
+        description: 'Ramblings about random stuff',
+        url: '/blog',
+        type: 'Page',
+        date: 1
+    },
+];
 
 export async function getSearchItems(): Promise<SearchItem[]> {
     const posts = await getCollection('blog');
     const projects = await getCollection('projects');
 
-    cachedSearchItems = [
+    const searchItems = [
+        ...routes,
         ...posts.map(({ id, data }) => ({
             title: data.title,
             description: data.description,
@@ -28,11 +53,11 @@ export async function getSearchItems(): Promise<SearchItem[]> {
             title: data.title,
             description: data.description,
             url: `/project/${id}`,
-            type: 'Project' as const,
+            type: 'Projects' as const,
             tags: data.techStack ?? [],
             date: data.date.valueOf(),
         })),
-    ].sort((a, b) => b.date - a.date);
+    ].sort((a, b) => (b.date ?? 0) - (a.date ?? 0));
 
-    return cachedSearchItems;
+    return searchItems;
 }
