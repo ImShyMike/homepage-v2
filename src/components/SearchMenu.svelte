@@ -70,6 +70,8 @@
     });
 
     function openMenu() {
+        // @ts-expect-error - umami is a global from analytics script
+        umami.track('search-menu-open');
         open = true;
         requestAnimationFrame(() => {
             inputEl?.focus();
@@ -217,6 +219,8 @@
                                         class={`hover:bg-ctp-mantle! border-ctp-base border! no-underline! ${visualIndex === activeIndex ? 'bg-ctp-mantle border-ctp-mantle' : ''} border-ctp-surface1/60 hover:border-ctp-lavender/70 hover:bg-ctp-mantle/40 flex flex-col gap-1 border-b px-4 py-3 transition-colors`}
                                         onmouseenter={() => (activeIndex = visualIndex)}
                                         role="option"
+                                        data-umami-event="search-result-click"
+                                        data-umami-event-url={item.url}
                                         aria-selected={visualIndex === activeIndex}
                                     >
                                         <p

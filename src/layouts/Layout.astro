@@ -31,15 +31,27 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
             }
         </script>
         <script is:inline data-astro-rerun>
-            (() => {
+            const handleAnalyticsLinks = () => {
                 const name = 'outbound-link-click';
                 document.querySelectorAll('a').forEach((a) => {
-                    if (a.host !== window.location.host && !a.getAttribute('data-umami-event')) {
+                    if (a.getAttribute('data-umami-event')) return;
+
+                    const isExternal = a.host && a.host !== window.location.host;
+
+                    if (isExternal) {
                         a.setAttribute('data-umami-event', name);
                         a.setAttribute('data-umami-event-url', a.href);
                     }
                 });
-            })();
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', handleAnalyticsLinks);
+            } else {
+                handleAnalyticsLinks();
+            }
+
+            document.addEventListener('astro:after-swap', handleAnalyticsLinks);
         </script>
         <script
             is:inline
