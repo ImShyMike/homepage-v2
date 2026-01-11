@@ -44,7 +44,12 @@ const href = `/project/${id}`;
             }
             {
                 repo && (
-                    <a href={repo} class="flex items-center gap-1 text-inherit" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href={repo}
+                        class="flex items-center gap-1 text-inherit"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <Github class="h-6 w-6" /> Code
                     </a>
                 )
@@ -61,7 +66,7 @@ const href = `/project/${id}`;
                 sizes="(max-width: 768px) 600px, 400px"
                 class="max-w-full object-cover md:max-w-[45%]"
                 quality="mid"
-                layout='constrained'
+                layout="constrained"
                 loading="eager"
             />
         )
