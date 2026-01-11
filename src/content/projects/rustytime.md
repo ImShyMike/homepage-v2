@@ -10,29 +10,29 @@ heroImage: ../../assets/projects/rustytime.png
 
 <div class="flex flex-col items-center justify-center">
 <a class="mt-8!" href="https://rustytime.shymike.dev">
-    <img class="m-0!" src="https://raw.githubusercontent.com/ImShyMike/rustytime/main/frontend/static/pwa/favicon-196.png" alt="rustytime" width="200">
+    <img class="m-0!" alt="rustytime" width="200" src="https://raw.githubusercontent.com/ImShyMike/rustytime/main/frontend/static/pwa/favicon-196.png">
 </a>
 <a class="text-lg! mt-4!" href="https://rustytime.shymike.dev"><h1 class="m-0!">rustytime</h1></a>
 <p class="m-0 mb-2">🕒 blazingly fast time tracking for developers</p>
 
 <div class="flex flex-row gap-2 items-center">
     <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io Total Downloads" src="https://img.shields.io/crates/d/rustytime-server?style=flat-square&color=blue" />
+        <img alt="Crates.io Total Downloads" src="https://img.shields.io/crates/d/rustytime-server?style=flat-square&color=blue"/>
     </a>
     <a href="https://github.com/ImShyMike/rustytime/actions/workflows/ci.yml">
-        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/ImShyMike/rustytime/ci.yml?style=flat-square&color=green" />
+        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/ImShyMike/rustytime/ci.yml?style=flat-square&color=green"/>
     </a>
     <a href="https://crates.io/crates/rustytime-server">
-        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ImShyMike/rustytime?style=flat-square&color=yellowgreen" />
+        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ImShyMike/rustytime?style=flat-square&color=yellowgreen"/>
     </a>
     <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io Version" src="https://img.shields.io/crates/v/rustytime-server?style=flat-square&color=yellow" />
+        <img alt="Crates.io Version" src="https://img.shields.io/crates/v/rustytime-server?style=flat-square&color=yellow"/>
     </a>
     <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io License" src="https://img.shields.io/crates/l/rustytime-server?style=flat-square&color=orange" />
+        <img alt="Crates.io License" src="https://img.shields.io/crates/l/rustytime-server?style=flat-square&color=orange"/>
     </a>
     <a href="https://crates.io/crates/rustytime-server">
-        <img alt="Crates.io Size" src="https://img.shields.io/crates/size/rustytime-server?style=flat-square&color=red" />
+        <img alt="Crates.io Size" src="https://img.shields.io/crates/size/rustytime-server?style=flat-square&color=red"/>
     </a>
 </div>
 </div>
@@ -48,7 +48,9 @@ heroImage: ../../assets/projects/rustytime.png
 
 ## What is this?
 
-`rustytime` is a [WakaTime](https://wakatime.com) compatible backend that can be used to track time in most apps/IDEs with any of the existing [plugins](https://wakatime.com/plugins)! (or you could even [make your own](https://wakatime.com/help/creating-plugin) plugin)
+`rustytime` is a [WakaTime](https://wakatime.com) compatible backend that can be used to track time
+in most apps/IDEs with any of the existing [plugins](https://wakatime.com/plugins)! (or you could
+even [make your own](https://wakatime.com/help/creating-plugin) plugin)
 
 ## Local Development
 
@@ -94,11 +96,13 @@ cargo run --features seed
 
 ## WakaTime
 
-When using a WakaTime client, point your requests to `http://localhost:3000/api/v1` (or `https://api-rustytime.shymike.dev/api/v1` if using the deployed version)
+When using a WakaTime client, point your requests to `http://localhost:3000/api/v1`
+(or `https://api-rustytime.shymike.dev/api/v1` if using the deployed version)
 
 ### Observability (OTel + LGTM)
 
-If you're running the self-hosted Grafana LGTM (Loki/Grafana/Tempo/Mimir) stack or an OpenTelemetry Collector on the same machine, expose its OTLP receiver (default gRPC on `4317`). Then add the following to your `.env`:
+If you're running the self-hosted Grafana LGTM (Loki/Grafana/Tempo/Mimir) stack or an OpenTelemetry
+Collector on the same machine, expose its OTLP receiver (default gRPC on `4317`). Then add the following to your `.env`:
 
 ```dotenv
 OTEL_SERVICE_NAME=rustytime-backend
@@ -125,9 +129,9 @@ PYROSCOPE_SAMPLE_RATE=99
 
 <a href="https://www.star-history.com/#imshymike/rustytime&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=imshymike/rustytime&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=imshymike/rustytime&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=imshymike/rustytime&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=imshymike/rustytime&type=date&theme=dark&legend=top-left"/>
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=imshymike/rustytime&type=date&legend=top-left"/>
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=imshymike/rustytime&type=date&legend=top-left"/>
  </picture>
 </a>
 
