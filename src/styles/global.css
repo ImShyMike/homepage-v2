@@ -9,6 +9,7 @@
         @apply font-sans;
         font-family: 'Noto Sans Variable', sans-serif;
         font-variation-settings: 'wdth' 400;
+        font-display: swap;
     }
 
     code,
@@ -16,6 +17,7 @@
         @apply font-mono;
         font-family: 'Fira Code Variable', monospace;
         font-variation-settings: 'wght' 400;
+        font-display: swap;
     }
 }
 
