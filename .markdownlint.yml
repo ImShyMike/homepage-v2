@@ -3,3 +3,5 @@ ignore_front_matter: true
 MD033: false
 MD013:
     line_length: 120
+MD007:
+    indent: 4

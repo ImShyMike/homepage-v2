@@ -23,7 +23,7 @@ Before starting this workshop, make sure you have the following installed on you
 - A [GitHub](https://github.com) account
 - An IDE (I will be using [VSCode](https://code.visualstudio.com))
 - A [Cloudflare](https://cloudflare.com) account (or any other hosting provider that supports Astro,
-the guide will use Cloudflare)
+  the guide will use Cloudflare)
 
 ## 1) Create a new Astro project
 
@@ -369,9 +369,9 @@ To deploy your very amazing blog to Cloudflare Pages:
 - Find your project's repository, select it and hit `Begin setup`.
 
 - Edit the following settings:
-  - **Project name**: Your project name
-  - **Framework preset**: `Astro`
-  - **Build command**: `bun run build`
+    - **Project name**: Your project name
+    - **Framework preset**: `Astro`
+    - **Build command**: `bun run build`
 
 ![cloudflare pages deployment](../../assets/blog/making-a-blog/create-deployment.png)
 
