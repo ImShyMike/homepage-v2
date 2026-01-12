@@ -70,17 +70,33 @@
     });
 
     function openMenu() {
+        if (items.length === 0) {
+            try {
+                fetch('/api/search.json').then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                }).then((data: SearchItem[]) => {
+                    items = data;
+                });
+            } catch (error) {
+                console.error('Failed to load search items:', error);
+            }
+        };
+
+        open = true;
+        requestAnimationFrame(() => {
+            inputEl?.focus();
+            inputEl?.select();
+        });
+
         try {
             // @ts-expect-error - umami is a global from analytics script
             umami.track('search-menu-open');
         } catch {
             console.warn('Unable to log menu open. This was either caused by an AD blocker or my umami instance is down.');
         }
-        open = true;
-        requestAnimationFrame(() => {
-            inputEl?.focus();
-            inputEl?.select();
-        });
     }
 
     function closeMenu() {
@@ -119,15 +135,6 @@
     }
 
     onMount(() => {
-        (async () => {
-            try {
-                const response = await fetch('/api/search.json');
-                items = await response.json();
-            } catch (error) {
-                console.error('Failed to load search items:', error);
-            }
-        })();
-
         const handler = (event: KeyboardEvent) => {
             if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
                 event.preventDefault();

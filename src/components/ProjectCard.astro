@@ -71,10 +71,11 @@ const href = `/projects/${id}`;
                 src={heroImage}
                 format="webp"
                 alt="project image"
-                widths={[150, 300, 600, heroImage.width]}
+                widths={[150, 300, 600]}
                 sizes="(max-width: 768px) 600px, 400px"
                 class="max-w-full object-cover md:max-w-[45%]"
                 quality="mid"
+                priority
                 layout="constrained"
                 loading="eager"
             />
