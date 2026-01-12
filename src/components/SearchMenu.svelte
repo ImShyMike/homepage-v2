@@ -70,8 +70,12 @@
     });
 
     function openMenu() {
-        // @ts-expect-error - umami is a global from analytics script
-        umami.track('search-menu-open');
+        try {
+            // @ts-expect-error - umami is a global from analytics script
+            umami.track('search-menu-open');
+        } catch {
+            console.warn('Unable to log menu open. This was either caused by an AD blocker or my umami instance is down.');
+        }
         open = true;
         requestAnimationFrame(() => {
             inputEl?.focus();
