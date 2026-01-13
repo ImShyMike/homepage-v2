@@ -1,0 +1,129 @@
+@import '@catppuccin/tailwindcss/mocha.css';
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@layer base {
+    a.rehype-heading-link,
+    a.rehype-heading-link:hover,
+    a.rehype-heading-link:active,
+    a.rehype-heading-link:focus {
+        @apply text-ctp-text! bg-transparent! no-underline!;
+    }
+
+    :root[data-theme='dark'] {
+        color-scheme: dark;
+    }
+
+    :root[data-theme='dark'] .astro-code {
+        background-color: var(--shiki-dark-bg, #1e1e2e) !important;
+        color: var(--shiki-dark, #cdd6f4) !important;
+    }
+
+    :root[data-theme='dark'] .astro-code .line,
+    :root[data-theme='dark'] .astro-code span {
+        color: var(--shiki-dark, inherit) !important;
+    }
+}
+
+@layer components {
+    .prose {
+        --tw-prose-body: var(--color-ctp-text) !important;
+        --tw-prose-headings: var(--color-ctp-text) !important;
+        --tw-prose-lead: var(--color-ctp-subtext0) !important;
+        --tw-prose-links: var(--color-ctp-lavender) !important;
+        --tw-prose-bold: var(--color-ctp-text) !important;
+        --tw-prose-counters: var(--color-ctp-subtext0) !important;
+        --tw-prose-bullets: var(--color-ctp-subtext0) !important;
+        --tw-prose-hr: var(--color-ctp-surface0) !important;
+        --tw-prose-quotes: var(--color-ctp-text) !important;
+        --tw-prose-quote-borders: var(--color-ctp-surface1) !important;
+        --tw-prose-captions: var(--color-ctp-subtext1) !important;
+        --tw-prose-code: var(--color-ctp-text) !important;
+        --tw-prose-pre-code: var(--color-ctp-text) !important;
+        --tw-prose-pre-bg: var(--color-ctp-surface0) !important;
+        --tw-prose-th-borders: var(--color-ctp-surface1) !important;
+        --tw-prose-td-borders: var(--color-ctp-surface0) !important;
+        --tw-prose-kbd: var(--color-ctp-text) !important;
+        --tw-prose-kbd-shadows: var(--color-ctp-surface0) !important;
+    }
+
+    .prose table {
+        @apply border-ctp-surface1 bg-ctp-base text-ctp-text border;
+    }
+
+    .prose thead {
+        @apply bg-ctp-crust text-ctp-text;
+    }
+
+    .prose tbody tr:nth-child(odd) {
+        @apply bg-ctp-mantle;
+    }
+
+    .prose tbody tr:nth-child(even) {
+        @apply bg-ctp-base;
+    }
+
+    .prose blockquote {
+        @apply bg-ctp-surface0/25;
+    }
+
+    .prose th,
+    .prose td {
+        @apply border-ctp-surface2 border px-3! py-2!;
+    }
+
+    .prose pre {
+        @apply border-ctp-surface1 rounded-none! border px-3! py-2! md:px-5! md:py-4!;
+    }
+
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4,
+    .prose h5,
+    .prose h6 {
+        scroll-margin-top: 2rem;
+    }
+
+    .prose code {
+        &::before,
+        &::after {
+            content: '' !important;
+        }
+        font-style: monospace !important;
+    }
+
+    .prose pre code {
+        background-color: transparent !important;
+    }
+}
+
+@layer rehype {
+    @media (min-width: 110ch) {
+        .rehype-heading {
+            margin-left: -1ch;
+        }
+
+        .rehype-heading-link::before {
+            content: '#';
+            color: var(--subtext0);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            position: relative;
+            right: 0.6ch;
+        }
+
+        .rehype-heading:hover .rehype-heading-link::before {
+            visibility: visible;
+            opacity: 0.8;
+            color: var(--text) !important;
+        }
+    }
+
+    .rehype-heading-link {
+        color: var(--text) !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+    }
+}
