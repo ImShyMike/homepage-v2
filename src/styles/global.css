@@ -1,7 +1,7 @@
 @import '@fontsource-variable/noto-sans/wdth.css';
 @import '@fontsource-variable/fira-code';
-@import '@catppuccin/tailwindcss/mocha.css';
 @import 'tailwindcss';
+@import '@catppuccin/tailwindcss/mocha.css';
 
 @layer font {
     body {

@@ -1,6 +1,6 @@
-@import '@catppuccin/tailwindcss/mocha.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+@import '@catppuccin/tailwindcss/mocha.css';
 
 @layer base {
     a.rehype-heading-link,
