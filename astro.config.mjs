@@ -33,7 +33,15 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: ['en'],
     },
-    integrations: [mdx(), sitemap(), svelte()],
+    integrations: [
+        mdx(),
+        sitemap({
+            changefreq: 'weekly',
+            priority: 0.7,
+            lastmod: new Date(),
+        }),
+        svelte(),
+    ],
     env: {
         schema: {
             CF_PAGES_COMMIT_SHA: envField.string({

@@ -12,11 +12,13 @@ export async function GET(context: APIContext) {
         title: SITE_TITLE,
         description: SITE_DESCRIPTION,
         site: context.site,
+        customData: '<language>en-us</language>',
         items: posts.map((post) => ({
             title: post.data.title,
             description: post.data.description,
             pubDate: post.data.pubDate,
             link: `/blog/${post.id}/`,
+            categories: post.data.tags || [],
         })),
     });
 }
