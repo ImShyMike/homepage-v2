@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { navigate } from 'astro:transitions/client';
     import LucideSearch from '~icons/lucide/search';
     import type { SearchItem } from '../utils/searchData';
 
@@ -129,7 +130,9 @@
         }
 
         if (event.key === 'Enter' && visuallyOrderedItems[activeIndex]) {
-            window.location.href = visuallyOrderedItems[activeIndex].url;
+            event.preventDefault();
+            closeMenu();
+            navigate(visuallyOrderedItems[activeIndex].url);
         }
     }
 
@@ -228,6 +231,11 @@
                                         href={item.url}
                                         class={`hover:bg-ctp-mantle! border-ctp-base border! no-underline! ${visualIndex === activeIndex ? 'bg-ctp-mantle border-ctp-mantle' : ''} border-ctp-surface1/60 hover:border-ctp-lavender/70 hover:bg-ctp-mantle/40 flex flex-col gap-1 border-b px-4 py-3 transition-colors`}
                                         onmouseenter={() => (activeIndex = visualIndex)}
+                                        onclick={(event) => {
+                                            event.preventDefault();
+                                            closeMenu();
+                                            navigate(item.url);
+                                        }}
                                         role="option"
                                         data-umami-event="search-result-click"
                                         data-umami-event-url={item.url}

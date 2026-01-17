@@ -11,6 +11,7 @@ import { getColorForString } from '../utils/colors';
 type Props = CollectionEntry<'projects'>['data'];
 
 const { title, description, date, link, repo, techStack = [], heroImage } = Astro.props as Props;
+const id = Astro.url.pathname.split('/').filter(Boolean)[1];
 ---
 
 <Layout title={title} description={description} image={heroImage}>
@@ -18,11 +19,14 @@ const { title, description, date, link, repo, techStack = [], heroImage } = Astr
         <div
             class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4"
         >
-            <h1 class="mt-4 mb-2! text-3xl font-bold">{title}</h1>
-            <p class="m-0! text-lg">{description}</p>
+            <h1 class="mt-4 mb-2! text-3xl font-bold" transition:name={`title-${id}`}>{title}</h1>
+            <p class="m-0! text-lg" transition:name={`description-${id}`}>{description}</p>
             {
                 techStack.length > 0 && (
-                    <div class="m-0! flex flex-1 flex-wrap items-center justify-center gap-2 pt-2 text-center">
+                    <div
+                        class="m-0! flex flex-1 flex-wrap items-center justify-center gap-2 pt-2 text-center"
+                        transition:name={`stack-${id}`}
+                    >
                         {techStack.map((tech) => (
                             <span
                                 class={`rounded border px-2 py-0.5 text-sm ${getColorForString(tech)}`}
@@ -45,6 +49,7 @@ const { title, description, date, link, repo, techStack = [], heroImage } = Astr
                         priority
                         class="mt-4!"
                         layout="full-width"
+                        transition:name={`hero-${id}`}
                     />
                 )
             }

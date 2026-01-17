@@ -25,6 +25,6 @@ import SearchMenu from './SearchMenu.svelte';
             <HeaderLink class="w-full text-center sm:w-auto" href="/projects">Projects</HeaderLink>
             <HeaderLink class="w-full text-center sm:w-auto" href="/blog">Blog</HeaderLink>
         </div>
-        <SearchMenu client:idle />
+        <SearchMenu client:load transition:persist />
     </nav>
 </header>

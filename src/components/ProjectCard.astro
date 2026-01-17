@@ -17,15 +17,16 @@ const href = `/projects/${id}`;
 
 <article
     class="border-ctp-surface0 hover:border-ctp-lavender/50 flex w-full flex-col border transition-colors md:h-55 md:flex-row"
+    transition:name={`card-${id}`}
 >
     <div class="order-2 flex h-full flex-col gap-2 px-5 py-3 md:order-1 md:max-w-[60%]">
         <h3 class="text-xl font-bold">
-            <a href={href} class="text-inherit">{title}</a>
+            <a href={href} class="text-inherit" transition:name={`title-${id}`}>{title}</a>
         </h3>
-        <p class="leading-relaxed">{description}</p>
+        <p class="leading-relaxed" transition:name={`description-${id}`}>{description}</p>
         {
             techStack.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 text-xs">
+                <div class="flex flex-wrap gap-1.5 text-xs" transition:name={`stack-${id}`}>
                     {techStack.map((tech) => (
                         <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tech)}`}>
                             {tech}
@@ -78,6 +79,7 @@ const href = `/projects/${id}`;
                 priority
                 layout="constrained"
                 loading="eager"
+                transition:name={`hero-${id}`}
             />
         )
     }
