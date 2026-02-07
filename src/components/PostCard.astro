@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
-import { Image } from 'astro:assets';
 import { getColorForString } from '../utils/colors';
+import BaseCard from './BaseCard.astro';
 
 interface Props {
     blog: CollectionEntry<'blog'>;
@@ -14,51 +14,29 @@ const { title, description, pubDate, updatedDate, tags = [], heroImage } = data;
 const href = `/blog/${id}`;
 ---
 
-<article
-    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex w-full flex-col border transition-colors md:h-55 md:flex-row"
-    transition:name={`card-${id}`}
->
-    <div class="order-2 flex h-full flex-col gap-2 px-5 py-3 md:order-1 md:max-w-[60%]">
-        <h3 class="text-xl font-bold">
-            <a href={href} class="text-inherit" transition:name={`title-${id}`}>{title}</a>
-        </h3>
-        <p class="leading-relaxed" transition:name={`description-${id}`}>{description}</p>
-        {
-            tags.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 text-xs" transition:name={`tags-${id}`}>
-                    {tags.map((tag) => (
-                        <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tag)}`}>
-                            #{tag}
-                        </span>
-                    ))}
-                </div>
-            )
-        }
-        <p class="text-ctp-subtext0 mt-auto">
-            <FormattedDate date={pubDate} />{
-                updatedDate && (
-                    <span class="text-sm">
-                        (updated <FormattedDate date={updatedDate} />)
-                    </span>
-                )
-            }
-        </p>
-    </div>
+<BaseCard id={id} href={href} heroImage={heroImage}>
+    <h3 class="text-xl font-bold">
+        <a href={href} class="text-inherit" transition:name={`title-${id}`}>{title}</a>
+    </h3>
+    <p class="leading-relaxed" transition:name={`description-${id}`}>{description}</p>
     {
-        heroImage && (
-            <Image
-                src={heroImage}
-                format="webp"
-                alt="project image"
-                widths={[150, 300, 600, heroImage.width]}
-                sizes="(max-width: 768px) 600px, 400px"
-                class="max-w-full object-cover md:max-w-[45%]"
-                quality="mid"
-                priority
-                layout="constrained"
-                loading="eager"
-                transition:name={`hero-${id}`}
-            />
+        tags.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 text-xs" transition:name={`tags-${id}`}>
+                {tags.map((tag) => (
+                    <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tag)}`}>
+                        #{tag}
+                    </span>
+                ))}
+            </div>
         )
     }
-</article>
+    <p class="text-ctp-subtext0 mt-auto">
+        <FormattedDate date={pubDate} />{
+            updatedDate && (
+                <span class="text-sm">
+                    (updated <FormattedDate date={updatedDate} />)
+                </span>
+            )
+        }
+    </p>
+</BaseCard>

@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Github from '~icons/lucide/github';
 import ExternalLink from '~icons/lucide/external-link';
 import { getColorForString } from '../utils/colors';
-import { Image } from 'astro:assets';
+import BaseCard from './BaseCard.astro';
 
 interface Props {
     project: CollectionEntry<'projects'>;
@@ -15,72 +15,50 @@ const { title, description, link, repo, heroImage, techStack = [] } = data;
 const href = `/projects/${id}`;
 ---
 
-<article
-    class="border-ctp-surface0 hover:border-ctp-lavender/50 flex w-full flex-col border transition-colors md:h-55 md:flex-row"
-    transition:name={`card-${id}`}
->
-    <div class="order-2 flex h-full flex-col gap-2 px-5 py-3 md:order-1 md:max-w-[60%]">
-        <h3 class="text-xl font-bold">
-            <a href={href} class="text-inherit" transition:name={`title-${id}`}>{title}</a>
-        </h3>
-        <p class="leading-relaxed" transition:name={`description-${id}`}>{description}</p>
-        {
-            techStack.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 text-xs" transition:name={`stack-${id}`}>
-                    {techStack.map((tech) => (
-                        <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tech)}`}>
-                            {tech}
-                        </span>
-                    ))}
-                </div>
-            )
-        }
-        <div class="mt-auto flex gap-2">
-            {
-                link && (
-                    <a
-                        href={link}
-                        class="flex items-center gap-1 text-inherit"
-                        target="_blank"
-                        rel="noopener"
-                        data-umami-event="project-live-click"
-                        data-umami-event-url={link}
-                    >
-                        <ExternalLink class="h-6 w-6" /> Live
-                    </a>
-                )
-            }
-            {
-                repo && (
-                    <a
-                        href={repo}
-                        class="flex items-center gap-1 text-inherit"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-umami-event="project-repo-click"
-                        data-umami-event-url={repo}
-                    >
-                        <Github class="h-6 w-6" /> Code
-                    </a>
-                )
-            }
-        </div>
-    </div>
+<BaseCard id={id} href={href} heroImage={heroImage}>
+    <h3 class="text-xl font-bold">
+        <a href={href} class="text-inherit" transition:name={`title-${id}`}>{title}</a>
+    </h3>
+    <p class="leading-relaxed" transition:name={`description-${id}`}>{description}</p>
     {
-        heroImage && (
-            <Image
-                src={heroImage}
-                format="webp"
-                alt="project image"
-                widths={[150, 300, 600, heroImage.width]}
-                sizes="(max-width: 768px) 600px, 400px"
-                class="max-w-full object-cover md:max-w-[45%]"
-                quality="mid"
-                priority
-                layout="constrained"
-                loading="eager"
-                transition:name={`hero-${id}`}
-            />
+        techStack.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 text-xs" transition:name={`stack-${id}`}>
+                {techStack.map((tech) => (
+                    <span class={`rounded border px-1.5 py-0.5 ${getColorForString(tech)}`}>
+                        {tech}
+                    </span>
+                ))}
+            </div>
         )
     }
-</article>
+    <div class="mt-auto flex gap-2">
+        {
+            link && (
+                <a
+                    href={link}
+                    class="flex items-center gap-1 text-inherit"
+                    target="_blank"
+                    rel="noopener"
+                    data-umami-event="project-live-click"
+                    data-umami-event-url={link}
+                >
+                    <ExternalLink class="h-6 w-6" /> Live
+                </a>
+            )
+        }
+        {
+            repo && (
+                <a
+                    href={repo}
+                    class="flex items-center gap-1 text-inherit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="project-repo-click"
+                    data-umami-event-url={repo}
+                >
+                    <Github class="h-6 w-6" /> Code
+                </a>
+            )
+        }
+    </div>
+</BaseCard>

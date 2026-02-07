@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+    id: string;
+    href: string;
+    heroImage?: ImageMetadata;
+}
+
+const { id, href, heroImage } = Astro.props;
+---
+
+<article
+    class="base-card border-ctp-surface0 hover:border-ctp-lavender/50 flex w-full flex-col border transition-colors md:h-55 md:flex-row"
+    transition:name={`card-${id}`}
+    data-href={href}
+>
+    <div class="order-2 flex h-full flex-col gap-2 px-5 py-3 md:order-1 md:max-w-[60%]">
+        <slot />
+    </div>
+    {
+        heroImage && (
+            <a href={href} class="contents">
+                <Image
+                    src={heroImage}
+                    format="webp"
+                    alt="project image"
+                    widths={[150, 300, 600, heroImage.width]}
+                    sizes="(max-width: 768px) 600px, 400px"
+                    class="max-w-full object-cover md:max-w-[45%]"
+                    quality="mid"
+                    priority
+                    layout="constrained"
+                    loading="eager"
+                    transition:name={`hero-${id}`}
+                />
+            </a>
+        )
+    }
+</article>
+
+<script>
+    function initCards() {
+        document.querySelectorAll<HTMLElement>('.base-card').forEach((card) => {
+            card.addEventListener(
+                'mouseenter',
+                () => {
+                    const href = card.dataset.href;
+                    if (!href) return;
+                    fetch(href)
+                        .then((res) => res.text())
+                        .then((html) => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            doc.querySelectorAll<HTMLImageElement>('img[src]').forEach((img) => {
+                                const link = document.createElement('link');
+                                link.rel = 'preload';
+                                link.as = 'image';
+                                link.href = img.src;
+                                if (img.srcset) link.setAttribute('imagesrcset', img.srcset);
+                                if (img.sizes) link.setAttribute('imagesizes', img.sizes);
+                                if (!document.head.querySelector(`link[href="${link.href}"]`)) {
+                                    document.head.appendChild(link);
+                                }
+                            });
+                        });
+                },
+                { once: true }
+            );
+        });
+    }
+
+    initCards();
+    document.addEventListener('astro:after-swap', initCards);
+</script>
