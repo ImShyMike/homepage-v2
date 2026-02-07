@@ -24,7 +24,7 @@
         "@fontsource-variable/noto-sans": "^5.2.10",
         "@giscus/svelte": "^3.1.0",
         "@tailwindcss/vite": "^4.1.18",
-        "astro": "^5.16.15",
+        "astro": "^5.17.1",
         "prettier": "^3.8.1",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-svelte": "^3.4.1",
@@ -32,21 +32,21 @@
         "rehype-autolink-headings": "^7.1.0",
         "rehype-slug": "^6.0.0",
         "remark-toc": "^9.0.0",
-        "svelte": "^5.48.0",
+        "svelte": "^5.50.0",
         "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",
         "unplugin-icons": "^22.5.0"
     },
     "devDependencies": {
-        "@eslint/compat": "^2.0.1",
-        "@iconify-json/lucide": "^1.2.86",
+        "@eslint/compat": "^2.0.2",
+        "@iconify-json/lucide": "^1.2.89",
         "@tailwindcss/typography": "^0.5.19",
-        "@typescript-eslint/parser": "^8.53.1",
+        "@typescript-eslint/parser": "^8.54.0",
         "eslint": "^9.39.2",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-astro": "^1.5.0",
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-svelte": "^3.14.0",
-        "typescript-eslint": "^8.53.1"
+        "typescript-eslint": "^8.54.0"
     }
 }
