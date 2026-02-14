@@ -7,7 +7,7 @@ import Giscus from '../components/Giscus.svelte';
 import Layout from './Layout.astro';
 import { getColorForString } from '../utils/colors';
 import PageScrollBar from '../components/PageScrollBar.astro';
-import ArrowUp from '~icons/lucide/arrow-up';
+import ScrollToTop from '../components/ScrollToTop.astro';
 
 type Props = CollectionEntry<'blog'>['data'] & { wordCount: number };
 
@@ -92,14 +92,5 @@ const readingTime = Math.ceil(wordCount / 200);
     <section class="border-ctp-surface0 border-t px-5 pt-6 pb-4">
         <Giscus client:only="svelte" site={Astro.site} />
     </section>
+    <ScrollToTop />
 </Layout>
-
-<div class="fixed right-8 bottom-8 sm:right-16 sm:bottom-16 md:right-12 md:bottom-12">
-    <div
-        class="bg-ctp-crust text-ctp-text hover:bg-ctp-surface1 border-ctp-surface0 rounded-full border opacity-80 transition-opacity hover:opacity-100"
-    >
-        <a href="#top" class="bg-ctp-transparent flex items-center justify-center rounded-full p-2">
-            <ArrowUp class="h-8 w-8" />
-        </a>
-    </div>
-</div>

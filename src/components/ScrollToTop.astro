@@ -1,0 +1,47 @@
+---
+import ArrowUp from '~icons/lucide/arrow-up';
+---
+
+<div
+    id="scroll-to-top"
+    class="fixed right-8 bottom-8 opacity-0 transition-opacity duration-200 sm:right-16 sm:bottom-16 md:right-12 md:bottom-12"
+>
+    <div
+        class="bg-ctp-crust text-ctp-text hover:bg-ctp-surface1 border-ctp-surface0 rounded-full border opacity-80 transition-opacity hover:opacity-100"
+    >
+        <a href="#top" class="bg-ctp-transparent flex items-center justify-center rounded-full p-2">
+            <ArrowUp class="h-8 w-8" />
+        </a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        if (!scrollToTopBtn) {
+            return;
+        }
+
+        const updateButtonVisibility = () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            if (scrollTop < 500) {
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.pointerEvents = 'none';
+            } else {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.pointerEvents = 'auto';
+            }
+        };
+
+        window.addEventListener('scroll', updateButtonVisibility, { passive: true });
+        updateButtonVisibility();
+
+        const cleanup = () => {
+            window.removeEventListener('scroll', updateButtonVisibility);
+        };
+
+        document.addEventListener('astro:before-swap', cleanup, { once: true });
+    });
+</script>
