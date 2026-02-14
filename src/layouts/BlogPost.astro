@@ -6,7 +6,8 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Giscus from '../components/Giscus.svelte';
 import Layout from './Layout.astro';
 import { getColorForString } from '../utils/colors';
-import PageScroll from '../components/PageScroll.astro';
+import PageScrollBar from '../components/PageScrollBar.astro';
+import ArrowUp from '~icons/lucide/arrow-up';
 
 type Props = CollectionEntry<'blog'>['data'] & { wordCount: number };
 
@@ -16,7 +17,7 @@ const readingTime = Math.ceil(wordCount / 200);
 ---
 
 <Layout title={title} description={description} image={heroImage}>
-    <PageScroll />
+    <PageScrollBar />
     <article class="prose prose-lg max-w-none">
         <div
             class="border-ctp-surface0 flex flex-col items-center justify-center border-b px-5 pt-4"
@@ -83,18 +84,22 @@ const readingTime = Math.ceil(wordCount / 200);
             <slot />
         </div>
     </article>
-    <section class="mt-8 px-5 pt-4 pb-4">
-        <Giscus client:only="svelte" />
-    </section>
     <a
         href={`${Astro.url.pathname}/raw`}
-        class="text-ctp-subtext0 mb-4 ml-6 inline-block px-1 hover:underline"
+        class="text-ctp-subtext0 mb-6 ml-6 inline-block px-1 hover:underline"
         >check out the raw text version of this post
     </a>
+    <section class="border-ctp-surface0 border-t px-5 pt-6 pb-4">
+        <Giscus client:only="svelte" site={Astro.site} />
+    </section>
 </Layout>
 
-<style>
-    .gsc-main {
-        gap: 0px !important;
-    }
-</style>
+<div class="fixed right-8 bottom-8 sm:right-16 sm:bottom-16 md:right-12 md:bottom-12">
+    <div
+        class="bg-ctp-crust text-ctp-text hover:bg-ctp-surface1 border-ctp-surface0 rounded-full border opacity-80 transition-opacity hover:opacity-100"
+    >
+        <a href="#top" class="bg-ctp-transparent flex items-center justify-center rounded-full p-2">
+            <ArrowUp class="h-8 w-8" />
+        </a>
+    </div>
+</div>

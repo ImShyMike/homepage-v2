@@ -21,6 +21,10 @@
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
     a {
         @apply decoration-ctp-lavender underline decoration-1 underline-offset-2 transition-colors;
     }

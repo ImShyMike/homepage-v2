@@ -1,10 +1,14 @@
 <script lang="ts">
     import Giscus from '@giscus/svelte';
 
+    let { site }: { site: URL | undefined } = $props();
+
     let theme = $derived.by(() => {
-        return document?.documentElement?.dataset?.theme === 'light'
-            ? 'catppuccin_latte'
-            : 'catppuccin_mocha';
+        const theme =
+            document?.documentElement?.dataset?.theme === 'light'
+                ? 'catppuccin_latte'
+                : 'catppuccin_mocha';
+        return site ? `${site}giscus/${theme}.css` : theme;
     });
 </script>
 

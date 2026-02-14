@@ -12,7 +12,7 @@ import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://shymike.dev',
+    site: import.meta.env.DEV ? 'http://localhost:4321' : 'https://shymike.dev',
     trailingSlash: 'ignore',
     output: 'static',
     image: {
