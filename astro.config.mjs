@@ -9,6 +9,7 @@ import remarkEmojify from './src/remark/emojify.mjs';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkToc from 'remark-toc';
+import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
     output: 'static',
     image: {
         domains: ['cachet.dunkirk.sh'],
+        remotePatterns: [{ protocol: 'https', hostname: '*.slack-edge.com' }],
     },
     vite: {
         plugins: [
@@ -53,22 +55,24 @@ export default defineConfig({
         validateSecrets: true,
     },
     markdown: {
-        remarkPlugins: [remarkEmojify, [remarkToc, { ordered: true, tight: true }]],
-        rehypePlugins: [
-            rehypeSlug,
-            [
-                rehypeAutolinkHeadings,
-                {
-                    behavior: 'wrap',
-                    headingProperties: {
-                        className: ['rehype-heading'],
+        processor: unified({
+            remarkPlugins: [remarkEmojify, [remarkToc, { ordered: true, tight: true }]],
+            rehypePlugins: [
+                rehypeSlug,
+                [
+                    rehypeAutolinkHeadings,
+                    {
+                        behavior: 'wrap',
+                        headingProperties: {
+                            className: ['rehype-heading'],
+                        },
+                        properties: {
+                            className: ['rehype-heading-link'],
+                        },
                     },
-                    properties: {
-                        className: ['rehype-heading-link'],
-                    },
-                },
+                ],
             ],
-        ],
+        }),
         shikiConfig: {
             themes: {
                 light: 'catppuccin-latte',

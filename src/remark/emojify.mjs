@@ -24,7 +24,7 @@ export default function remarkEmojify() {
                     });
                 }
 
-                console.log(`[emojify] found :${isLarge ? '!' : ''}${emojiName}:`);
+                console.debug(`[emojify] found :${isLarge ? '!' : ''}${emojiName}:`);
 
                 // create image node with Image component properties
                 parts.push({
