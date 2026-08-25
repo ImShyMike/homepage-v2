@@ -12,5 +12,42 @@
             "TimescaleDB"
         ],
         "heroImage": "../assets/projects/rustytime.png"
+    },
+    {
+        "id": "hackatime-heatmap",
+        "title": "hackatime-heatmap",
+        "description": "Easy to set up Hackatime coding activity heatmap for your profile!",
+        "date": "Aug 31 2025",
+        "link": "https://hackatime-heatmap.shymike.dev",
+        "repo": "https://github.com/ImShyMike/hackatime-heatmap",
+        "techStack": [
+            "Rust",
+            "SvelteKit"
+        ],
+        "heroImage": "../assets/projects/hackatime-heatmap.png"
+    },
+    {
+        "id": "waka-relay",
+        "title": "waka-relay",
+        "description": "📊 A self-hosted app that relays WakaTime heartbeats to multiple instances",
+        "date": "May 3 2025",
+        "repo": "https://github.com/ImShyMike/waka-relay",
+        "techStack": [
+            "Python"
+        ],
+        "heroImage": "../assets/projects/waka-relay.png"
+    },
+    {
+        "id": "otter",
+        "title": "otter",
+        "description": "Search engine for all Hack Club projects!",
+        "date": "Apr 13 2026",
+        "link": "https://search.shymike.dev",
+        "repo": "https://github.com/ImShyMike/otter",
+        "techStack": [
+            "Rust",
+            "SvelteKit"
+        ],
+        "heroImage": "../assets/projects/otter.png"
     }
 ]
