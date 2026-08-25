@@ -33,6 +33,7 @@ const buttons = await getCollection('buttons');
                                     height={31}
                                     class="image-pixelated url-image"
                                     loading="eager"
+                                    onerror="setTimeout(() => this.closest('a').remove(), 1000)"
                                 />
                             ) : (
                                 <Image

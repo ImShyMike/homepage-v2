@@ -54,7 +54,7 @@ const id = Astro.url.pathname.split('/').filter(Boolean)[1];
                 )
             }
         </div>
-        <div class="border-ctp-surface0 flex flex-row border-b">
+        <div class="flex flex-row">
             {
                 repo && (
                     <a
@@ -88,9 +88,6 @@ const id = Astro.url.pathname.split('/').filter(Boolean)[1];
                     <FormattedDate date={date} />
                 </p>
             </div>
-        </div>
-        <div class="px-5 pt-4 pb-2 md:px-10 lg:px-20">
-            <slot />
         </div>
     </article>
 </Layout>

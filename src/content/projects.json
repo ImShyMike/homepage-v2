@@ -1,0 +1,16 @@
+[
+    {
+        "id": "rustytime",
+        "title": "rustytime",
+        "description": "🕒 blazingly fast time tracking for developers",
+        "date": "Dec 29 2025",
+        "link": "https://rustytime.shymike.dev",
+        "repo": "https://github.com/ImShyMike/rustytime",
+        "techStack": [
+            "Rust",
+            "SvelteKit",
+            "TimescaleDB"
+        ],
+        "heroImage": "../assets/projects/rustytime.png"
+    }
+]
